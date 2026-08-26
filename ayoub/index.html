@@ -3,252 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Ayoub Store</title>
-
+<title>Ayoub Deals | AliExpress</title>
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Arial;
-background:#f1f5f9;
-}
-
-header{
-background:#000;
-padding:25px;
-text-align:center;
-}
-
-.logo{
-color:white;
-font-size:35px;
-font-weight:bold;
-margin-bottom:20px;
-}
-
-.social-bar{
-display:flex;
-justify-content:center;
-gap:18px;
-flex-wrap:wrap;
-}
-
-.social-bar a{
-width:55px;
-height:55px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:24px;
-text-decoration:none;
-transition:0.3s;
-}
-
-.social-bar a:hover{
-transform:translateY(-5px) scale(1.1);
-}
-
-.facebook{
-background:#1877F2;
-}
-
-.instagram{
-background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
-}
-
-.tiktok{
-background:#111;
-border:2px solid white;
-}
-
-.whatsapp{
-background:#25D366;
-}
-
-.container{
-padding:30px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.card{
-background:white;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 4px 15px rgba(0,0,0,0.08);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card img{
-width:100%;
-height:260px;
-object-fit:cover;
-}
-
-.card-content{
-padding:18px;
-}
-
-.card h3{
-font-size:18px;
-margin-bottom:12px;
-height:50px;
-overflow:hidden;
-}
-
-.price{
-font-size:24px;
-font-weight:bold;
-color:#e11d48;
-margin-bottom:15px;
-}
-
-.btn{
-display:block;
-text-align:center;
-padding:12px;
-background:#111;
-color:white;
-text-decoration:none;
-border-radius:12px;
-font-weight:bold;
-transition:0.3s;
-}
-
-.btn:hover{
-background:#e11d48;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#f5f6f8;color:#171717}.hero{background:linear-gradient(135deg,#111,#2b2b2b);color:#fff;padding:28px 18px 24px;text-align:center;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px #0002}.logo{font-size:32px;font-weight:800;margin-bottom:8px}.sub{color:#ddd;margin-bottom:18px}.social{display:flex;justify-content:center;gap:12px}.social a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:19px}.fb{background:#1877f2}.ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}.tt{background:#000;border:1px solid #777}.wa{background:#25d366}.toolbar{max-width:1250px;margin:22px auto 0;padding:0 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.search{flex:1;min-width:220px;padding:14px 16px;border:1px solid #ddd;border-radius:12px;font-size:15px;outline:none}.sort{padding:14px;border:1px solid #ddd;border-radius:12px;background:#fff}.count{font-weight:bold;color:#666}.grid{max-width:1250px;margin:20px auto;padding:0 18px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 3px 14px #00000010;transition:.2s;display:flex;flex-direction:column}.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px #0002}.pic{height:230px;background:#f1f1f1;position:relative}.pic img{width:100%;height:100%;object-fit:cover}.badge{position:absolute;top:10px;left:10px;background:#e11d48;color:#fff;padding:6px 9px;border-radius:8px;font-size:12px;font-weight:bold}.content{padding:14px;display:flex;flex-direction:column;flex:1}.title{font-size:15px;line-height:1.4;height:64px;overflow:hidden;margin-bottom:9px}.price{font-size:22px;font-weight:800;color:#e11d48}.old{text-decoration:line-through;color:#999;font-size:13px;margin:4px 0 12px}.btn{margin-top:auto;background:#111;color:#fff;text-align:center;text-decoration:none;padding:12px;border-radius:10px;font-weight:bold}.btn:hover{background:#e11d48}.empty{text-align:center;padding:50px;color:#777;grid-column:1/-1}.loading{text-align:center;padding:40px;color:#777}.footer{text-align:center;padding:25px;color:#888;font-size:13px}@media(max-width:600px){.logo{font-size:27px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:0 10px 30px}.pic{height:180px}.title{font-size:13px;height:55px}.price{font-size:18px}.content{padding:10px}.toolbar{padding:0 10px}.sort{width:100%}}
 </style>
-
 </head>
-
 <body>
-
-<header>
-
-<div class="logo">
-🔥 Ayoub Store
+<header class="hero">
+<div class="logo">🔥 Ayoub Deals</div>
+<div class="sub">Best AliExpress deals & offers</div>
+<div class="social">
+<a class="fb" href="https://www.facebook.com/ayoub.helalaboys.07" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a class="ig" href="https://www.instagram.com/ayoubzt2015/" target="_blank"><i class="fab fa-instagram"></i></a>
+<a class="tt" href="https://www.tiktok.com/@shopcut1" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a class="wa" href="https://wa.me/212622765085" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
-
-<div class="social-bar">
-
-<a class="facebook"
-href="https://www.facebook.com/ayoub.helalaboys.07"
-target="_blank">
-
-<i class="fab fa-facebook-f"></i>
-
-</a>
-
-<a class="instagram"
-href="https://www.instagram.com/ayoubzt2015/"
-target="_blank">
-
-<i class="fab fa-instagram"></i>
-
-</a>
-
-<a class="tiktok"
-href="https://www.tiktok.com/@shopcut1"
-target="_blank">
-
-<i class="fab fa-tiktok"></i>
-
-</a>
-
-<a class="whatsapp"
-href="https://wa.me/212622765085"
-target="_blank">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-</div>
-
 </header>
-
-<div id="products" class="container"></div>
-
+<div class="toolbar">
+<input id="search" class="search" placeholder="🔎 Search products...">
+<select id="sort" class="sort"><option value="default">Sort: Featured</option><option value="priceLow">Price: Low to High</option><option value="discount">Best Discount</option></select>
+<span id="count" class="count"></span>
+</div>
+<div id="loading" class="loading">Loading products...</div>
+<main id="products" class="grid"></main>
+<div class="footer">Affiliate links • Prices and availability may change on AliExpress</div>
 <script>
-
-console.log("START");
-
-Papa.parse("./products.csv", {
-
-download:true,
-header:true,
-
-complete:function(results){
-
-let box=document.getElementById("products");
-
-results.data.forEach(product => {
-
-if(!product["Image Url"]) return;
-
-box.innerHTML += `
-
-<div class="card">
-
-<img src="${product["Image Url"]}"
-onerror="this.src='https://via.placeholder.com/300'">
-
-<div class="card-content">
-
-<h3>${product["Product Desc"]}</h3>
-
-<div class="price">
-${product["Discount Price"]}
-</div>
-
-<a class="btn"
-href="${product["Promotion Url"]}"
-target="_blank">
-
-Buy Now
-
-</a>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-},
-
-error:function(err){
-
-console.log("ERROR:");
-console.log(err);
-
-}
-
-});
-
+let all=[];
+Papa.parse('./products.csv',{download:true,header:true,skipEmptyLines:true,complete:function(r){all=r.data.filter(p=>p['Image Url']&&p['Promotion Url']);render(all);},error:function(){document.getElementById('loading').textContent='Could not load products.csv';}});
+function render(data){document.getElementById('loading').style.display='none';let q=document.getElementById('search').value.toLowerCase().trim();let list=data.filter(p=>(p['Product Desc']||'').toLowerCase().includes(q));let s=document.getElementById('sort').value;if(s==='priceLow')list.sort((a,b)=>num(a['Discount Price'])-num(b['Discount Price']));if(s==='discount')list.sort((a,b)=>num(b['Discount'])-num(a['Discount']));document.getElementById('count').textContent=list.length+' products';let box=document.getElementById('products');if(!list.length){box.innerHTML='<div class="empty">No products found.</div>';return}box.innerHTML=list.map(p=>{let d=p['Discount']||'';return `<article class="card"><div class="pic"><img src="${safe(p['Image Url'])}" loading="lazy" onerror="this.src='https://via.placeholder.com/500x500?text=No+Image'"><span class="badge">-${safe(d)}</span></div><div class="content"><div class="title">${safe(p['Product Desc'])}</div><div class="price">${safe(p['Discount Price'])}</div><div class="old">Was ${safe(p['Origin Price'])}</div><a class="btn" href="${safe(p['Promotion Url'])}" target="_blank" rel="noopener noreferrer">View Deal →</a></div></article>`}).join('')}
+function num(v){return parseFloat(String(v||'').replace(/[^0-9.]/g,''))||0}function safe(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+document.getElementById('search').addEventListener('input',()=>render(all));document.getElementById('sort').addEventListener('change',()=>render(all));
 </script>
-
 </body>
 </html>
