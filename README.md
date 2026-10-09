@@ -1,33 +1,35 @@
-# CNC Forge — CNC Products Storefront
+# CNC Forge Maroc — décoration sur mesure & outils CNC
 
-A responsive, SEO-ready storefront for CNC routers, laser engravers, cutting tools, spindle motors, machine parts and workshop accessories.
+A responsive storefront combining made-to-order CNC decoration models with selected CNC machines, tools and workshop accessories.
 
-## Files
-- `index.html` — storefront homepage, category browsing, search, sort and product cards.
-- `products.csv` — add your CNC catalogue here (not included yet; it must contain real product data).
+## What the site shows
 
-## Connect your CNC product CSV
-Put a file named `products.csv` in the same folder as `index.html`. The page reads these columns when available:
+- **Portes CNC** from `porte-cnc` and `CNC-Moroccan-Door-Library`
+- **Panneaux décoratifs** from `panel-cnc-maroc`
+- **Tables, salon and furniture models** from `Twable` and `Salone-cnc`
+- **Décorations and ornaments** from `decorations`, `taksima`, `maganat-cnc` and `1-creative-Qoran`
+- **CNC equipment and tools** from the CNC Router and Tools CSV files in `dealzone`
 
-- `ProductId`
-- `Image Url`
-- `Product Desc` (used as a title until we add a dedicated SEO Title column)
-- `Origin Price`, `Discount Price`, `Currency`
-- `Promotion Url` (the actual product/affiliate link)
-- Optional: `Category`, `SEO Title`, `SEO Description`
+The homepage loads source CSVs directly from their existing repositories. It does not copy or offer the CSV files as downloads on the storefront.
 
-Keep the original product IDs, image URLs, prices and promotion URLs unchanged. Do not fabricate product specifications, ratings or discounts. The page categorizes products by title/description if no category is supplied.
+## Order policy
+
+Decoration models are examples for **made-to-order production**. Customers should contact us with the desired model and dimensions. Material, feasibility, price and delivery time must be confirmed before production. The site does not claim that finished items are in stock.
+
+Equipment cards open their existing product links from the source CSVs. Prices and links are shown only when present in the source data.
+
+## Search and layout
+
+- Search across model and tool titles
+- Category filters
+- Horizontal product rows with arrows and automatic movement
+- Responsive desktop and mobile layout
 
 ## Publish with GitHub Pages
+
 1. Open **Settings → Pages** in this repository.
 2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Select branch **main** and folder **/(root)**, then save.
-4. Wait for GitHub Pages to provide the published URL.
+3. Select **main** and **/(root)**, then save.
+4. Wait for GitHub Pages to finish deploying and show the published URL.
 
-## Next improvements
-- Add the actual CNC-only CSV from the existing CNC repositories.
-- Create SEO titles, descriptions and relevant hashtags in additional CSV columns while preserving the original columns.
-- Verify product links, categories, mobile layout and search after the real catalogue is added.
-
-## Note
-The catalogue is not populated yet because the correct CNC-only product file needs to be identified. This prevents unrelated products or invented product details from appearing on the store.
+The storefront is a static HTML page and does not require a build step.
