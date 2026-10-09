@@ -79,7 +79,7 @@ function relevantTool(p){
  const t=low(p.title);
  const exclude=/phone case|smartphone|iphone|samsung galaxy|bikini|swimwear|clothing|dress|shoes|jewelry|earring|necklace|watch band|audio amplifier|hi-fi|nas digital|router and switch|home decor|kitchen|toy|pet supplies|cosplay/i;
  if(exclude.test(t))return false;
- return /\\bcnc\\b|cnc router|cnc milling|cnc engraving|cnc machine|cnc water ?jet|cnc lathe|cnc axis|cnc table|cnc tool|cnc clamp|cnc controller|cnc spindle|cnc vacuum|cnc linear|router bit|router collet|spindle motor|er11|er16|er20|grbl|mach3|ncstudio|stepper motor|ballscrew|ball screw|linear rail|linear bearing|tool setter|touch plate|end mill|v-bit|v groove bit|carbide bit|dust shoe|workholding clamp|sbr\\d+uu|lm\\d+uu/i.test(t);
+ return /\bcnc\b|cnc router|cnc milling|cnc engraving|cnc machine|cnc water ?jet|cnc lathe|cnc axis|cnc table|cnc tool|cnc clamp|cnc controller|cnc spindle|cnc vacuum|cnc linear|router bit|router collet|spindle motor|er11|er16|er20|grbl|mach3|ncstudio|stepper motor|ballscrew|ball screw|linear rail|linear bearing|tool setter|touch plate|end mill|v-bit|v groove bit|carbide bit|dust shoe|workholding clamp|sbr\d+uu|lm\d+uu/i.test(t);
 }
 let products=[],activeFilter="all",query="";
 const groupInfo={
