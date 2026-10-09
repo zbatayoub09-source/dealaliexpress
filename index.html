@@ -62,7 +62,7 @@ const SOURCES = [
  {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"cnc-router",group:"router",kind:"affiliate",desc:"Produit issu du catalogue CNC Router de DealZone — vérifiez les détails chez le vendeur",filter:"router"},
  {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du catalogue DealZone — vérifiez les détails chez le vendeur",filter:"tool"}
 ];
-const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split(" ").map(encodeURIComponent).join("%20");
+const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split(" ").map(encodeURIComponent).join("%20") + "?v=20261009";
 function parseCSV(text){
  const first=(text.split(/\r?\n/,1)[0]||""); const delim=first.includes("\t")?"\t":",";
  const rows=[];let row=[],field="",quoted=false;
@@ -151,7 +151,7 @@ function render(){
 async function load(){
  const note=document.createElement("div");note.className="empty";note.textContent="Chargement des modèles et des outils…";document.getElementById("sections").appendChild(note);
  const results=await Promise.all(SOURCES.map(async src=>{
-  try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title&&p.image);if(src.repo==="dealzone")rows=rows.filter(p=>p.link&&relevantTool(p));return rows}
+  try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title&&p.image);if(src.repo==="dealzone")rows=rows.filter(p=>p.link&&relevantTool(p));if(src.file==="CNC Routers & Machinery.csv")console.info("CNC Router CSV products loaded:",rows.length);return rows}
   catch(e){console.warn("Source non chargée:",src.repo,e);return []}
  }));
  const seen=new Set();products=results.flat().filter(p=>{const key=(low(p.title)+"|"+low(p.image)).trim();if(seen.has(key))return false;seen.add(key);return true;});
