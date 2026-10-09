@@ -39,7 +39,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 </section>
 <div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><button class="chip" data-filter="door">Portes</button><button class="chip" data-filter="panel">Panneaux</button><button class="chip" data-filter="furniture">Tables & salon</button><button class="chip" data-filter="ornament">Ornements</button><button class="chip" data-filter="tool">Outils CNC</button></div>
 <div id="sections"></div>
-<div class="banner"><div><h3>Un modèle vous intéresse ?</h3><p>Envoyez le modèle choisi et les dimensions souhaitées. Le prix et le délai sont confirmés avant de lancer la fabrication.</p></div><a class="btn" href="https://wa.me/?text=Bonjour%2C%20je%20souhaite%20un%20renseignement%20sur%20une%20commande%20CNC." target="_blank" rel="noopener">Contacter sur WhatsApp ↗</a></div>
+<div class="banner"><div><h3>Un modèle vous intéresse ?</h3><p>Envoyez le modèle choisi et les dimensions souhaitées. Le prix et le délai sont confirmés avant de lancer la fabrication.</p></div><a class="btn" href="https://wa.me/212622765085?text=Bonjour%2C%20je%20souhaite%20un%20renseignement%20sur%20une%20commande%20CNC." target="_blank" rel="noopener">Contacter sur WhatsApp ↗</a></div>
 </main>
 <footer><div class="wrap foot"><div><strong>CNC FORGE MAROC</strong><p>Décoration et fabrication CNC sur commande, ainsi qu'une sélection de machines et d'accessoires. Les modèles de décoration sont des références visuelles : dimensions, matériaux, prix et faisabilité sont à confirmer avant fabrication.</p></div><div><strong>Informations</strong><p>Les produits d'équipement renvoient vers des vendeurs externes. Certains liens peuvent être des liens de recommandation. <br><a href="#portes">Voir les modèles</a> · <a href="#outils">Voir les outils</a></p></div></div></footer>
 <script>
@@ -121,7 +121,7 @@ function imageFallback(img){
 }
 function card(p){
  const orderText="Bonjour, je souhaite demander un devis pour : "+p.title+". Merci de me confirmer les dimensions possibles, le matériau, le prix et le délai.";
- const href=p.kind==="affiliate"?(p.link||("https://github.com/zbatayoub09-source/"+encodeURIComponent(p.src.repo))):"https://wa.me/?text="+encodeURIComponent(orderText);
+ const href=p.kind==="affiliate"?(p.link||("https://github.com/zbatayoub09-source/"+encodeURIComponent(p.src.repo))):"https://wa.me/212622765085?text="+encodeURIComponent(orderText);
  const btn=p.kind==="affiliate"?(p.link?"Voir le produit ↗":"Voir le catalogue ↗"):"Demander un devis ↗";
  const price=p.kind==="affiliate"&&p.price?'<div class="price">'+esc(money(p.price))+(p.old?'<small> · Avant '+esc(money(p.old))+'</small>':"")+'</div>':'<div class="meta">Fabrication sur commande · Prix sur devis</div>';
  return '<article class="card '+(p.kind==="affiliate"?"equipment":"")+'"><div class="pic">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="imageFallback(this)">':'<span>Modèle CNC</span>')+'<span class="tag">'+(p.kind==="affiliate"?"ÉQUIPEMENT":"SUR COMMANDE")+'</span></div><div class="cardbody"><h3>'+esc(p.title)+'</h3><div class="meta">'+esc(p.desc)+'</div>'+price+'<a class="cardbtn" href="'+esc(href)+'" '+(p.kind==="affiliate"?'target="_blank" rel="noopener"':'target="_blank" rel="noopener"')+'>'+btn+'</a></div></article>';
