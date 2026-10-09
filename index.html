@@ -62,7 +62,7 @@ const SOURCES = [
  {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"cnc-router",group:"router",kind:"affiliate",desc:"Produit issu du catalogue CNC Router de DealZone — vérifiez les détails chez le vendeur",filter:"router"},
  {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du catalogue DealZone — vérifiez les détails chez le vendeur",filter:"tool"}
 ];
-const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + encodeURIComponent(s.file || "products.csv");
+const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split(" ").map(encodeURIComponent).join("%20");
 function parseCSV(text){
  const first=(text.split(/\r?\n/,1)[0]||""); const delim=first.includes("\t")?"\t":",";
  const rows=[];let row=[],field="",quoted=false;
