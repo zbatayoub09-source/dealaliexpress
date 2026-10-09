@@ -79,8 +79,8 @@ function normalize(row,src){
  let image=pick(row,["Image","Image Url","Image URL","image","image_url","Product Image"]);
  if(image){
   image=image.trim().replace(/&amp;/g,"&");
-  const driveId=(image.match(/[?&]id=([^&]+)/)||[])[1]||(image.match(/drive\\.google\\.com\\/(?:file\\/d\\/|open\\?id=)([A-Za-z0-9_-]+)/)||[])[1];
-  if(driveId && /drive\\.google\\.com/.test(image)) image="https://drive.google.com/thumbnail?id="+driveId+"&sz=w1000";
+  const driveId=(image.match(/[?&]id=([^&]+)/)||[])[1]||(image.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([A-Za-z0-9_-]+)/)||[])[1];
+  if(driveId && /drive\.google\.com/.test(image)) image="https://drive.google.com/thumbnail?id="+driveId+"&sz=w1000";
  }
  const link=pick(row,["Promotion Url","Product Url","Product URL","Affiliate Link","Link","URL"]);
  const price=pick(row,["Discount Price","Sale Price","Price","price"]);
