@@ -76,7 +76,12 @@ const low=s=>String(s||"").toLowerCase();
 const pick=(o,keys)=>{for(const k of keys){if(o[k]&&String(o[k]).trim())return String(o[k]).trim()}return ""};
 function normalize(row,src){
  const title=pick(row,["Title","SEO Title","Product Desc","Product Title","Name","title","name"])||"Modèle CNC";
- const image=pick(row,["Image","Image Url","Image URL","image","image_url","Product Image"]);
+ let image=pick(row,["Image","Image Url","Image URL","image","image_url","Product Image"]);
+ if(image){
+  image=image.trim().replace(/&amp;/g,"&");
+  const driveId=(image.match(/[?&]id=([^&]+)/)||[])[1]||(image.match(/drive\\.google\\.com\\/(?:file\\/d\\/|open\\?id=)([A-Za-z0-9_-]+)/)||[])[1];
+  if(driveId && /drive\\.google\\.com/.test(image)) image="https://drive.google.com/thumbnail?id="+driveId+"&sz=w1000";
+ }
  const link=pick(row,["Promotion Url","Product Url","Product URL","Affiliate Link","Link","URL"]);
  const price=pick(row,["Discount Price","Sale Price","Price","price"]);
  const old=pick(row,["Origin Price","Original Price"]);
@@ -99,12 +104,27 @@ const groupInfo={
 };
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function money(s){if(!s)return "";return s.replace(/^([A-Z]{3})\s*/,"$1 ").trim()}
+function imageFallback(img){
+ const current=img.getAttribute("src")||"";
+ const id=(current.match(/[?&]id=([^&]+)/)||[])[1];
+ if(id && /drive\\.google\\.com/.test(current) && !img.dataset.driveFallback){
+  img.dataset.driveFallback="1";
+  img.src="https://drive.google.com/uc?export=view&id="+id;
+  return;
+ }
+ img.onerror=null;
+ img.style.display="none";
+ const note=document.createElement("span");
+ note.textContent="Photo indisponible";
+ note.style.cssText="padding:12px;text-align:center;color:#687386;font-size:12px";
+ img.parentElement.appendChild(note);
+}
 function card(p){
  const orderText="Bonjour, je souhaite demander un devis pour : "+p.title+". Merci de me confirmer les dimensions possibles, le matériau, le prix et le délai.";
  const href=p.kind==="affiliate"?(p.link||("https://github.com/zbatayoub09-source/"+encodeURIComponent(p.src.repo))):"https://wa.me/?text="+encodeURIComponent(orderText);
  const btn=p.kind==="affiliate"?(p.link?"Voir le produit ↗":"Voir le catalogue ↗"):"Demander un devis ↗";
  const price=p.kind==="affiliate"&&p.price?'<div class="price">'+esc(money(p.price))+(p.old?'<small> · Avant '+esc(money(p.old))+'</small>':"")+'</div>':'<div class="meta">Fabrication sur commande · Prix sur devis</div>';
- return '<article class="card '+(p.kind==="affiliate"?"equipment":"")+'"><div class="pic">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="this.style.display=\'none\';this.parentElement.insertAdjacentHTML(\'beforeend\',\'<span>Image indisponible</span>\')">':'<span>Modèle CNC</span>')+'<span class="tag">'+(p.kind==="affiliate"?"ÉQUIPEMENT":"SUR COMMANDE")+'</span></div><div class="cardbody"><h3>'+esc(p.title)+'</h3><div class="meta">'+esc(p.desc)+'</div>'+price+'<a class="cardbtn" href="'+esc(href)+'" '+(p.kind==="affiliate"?'target="_blank" rel="noopener"':'target="_blank" rel="noopener"')+'>'+btn+'</a></div></article>';
+ return '<article class="card '+(p.kind==="affiliate"?"equipment":"")+'"><div class="pic">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="imageFallback(this)">':'<span>Modèle CNC</span>')+'<span class="tag">'+(p.kind==="affiliate"?"ÉQUIPEMENT":"SUR COMMANDE")+'</span></div><div class="cardbody"><h3>'+esc(p.title)+'</h3><div class="meta">'+esc(p.desc)+'</div>'+price+'<a class="cardbtn" href="'+esc(href)+'" '+(p.kind==="affiliate"?'target="_blank" rel="noopener"':'target="_blank" rel="noopener"')+'>'+btn+'</a></div></article>';
 }
 function filtered(){
  return products.filter(p=>{
