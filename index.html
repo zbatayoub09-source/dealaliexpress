@@ -37,7 +37,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 </div>
 <div class="trust"><div><span class="ico">📐</span><span><strong>Sur mesure</strong><small>Dimensions à confirmer avant fabrication</small></span></div><div><span class="ico">🪵</span><span><strong>Fabriqué à la commande</strong><small>Pas de stock annoncé à tort</small></span></div><div><span class="ico">⚙️</span><span><strong>Équipement CNC</strong><small>Liens de produits pour votre atelier</small></span></div></div>
 </section>
-<div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><button class="chip" data-filter="door">Portes</button><button class="chip" data-filter="panel">Panneaux</button><button class="chip" data-filter="furniture">Tables & salon</button><button class="chip" data-filter="ornament">Ornements</button><button class="chip" data-filter="tool">Outils CNC</button><button class="chip" data-filter="router">CNC Router</button></div>
+<div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><button class="chip" data-filter="door">Portes</button><button class="chip" data-filter="panel">Panneaux</button><button class="chip" data-filter="furniture">Tables & salon</button><button class="chip" data-filter="ornament">Ornements</button><button class="chip" data-filter="tool">Outils CNC</button></div>
 <div id="sections"></div>
 <div class="banner"><div><h3>Un modèle vous intéresse ?</h3><p>Envoyez le modèle choisi et les dimensions souhaitées. Le prix et le délai sont confirmés avant de lancer la fabrication.</p></div><a class="btn" href="https://wa.me/212622765085?text=Bonjour%2C%20je%20souhaite%20un%20renseignement%20sur%20une%20commande%20CNC." target="_blank" rel="noopener">Contacter sur WhatsApp ↗</a></div>
 </main>
@@ -59,10 +59,10 @@ const SOURCES = [
  {repo:"Salone-cnc",title:"Catalogue Salone CNC",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du CSV Salone-cnc",filter:"other"},
  {repo:"Quran",title:"Catalogue Quran",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du CSV Quran",filter:"other"},
  {repo:"-",title:"Autre catalogue",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du CSV du dépôt",filter:"other"},
- {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"cnc-router",group:"router",kind:"affiliate",desc:"Produit issu du catalogue CNC Router de DealZone — vérifiez les détails chez le vendeur",filter:"router"},
+ {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du catalogue CNC de DealZone",filter:"tool"},
  {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du catalogue DealZone — vérifiez les détails chez le vendeur",filter:"tool"}
 ];
-const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split(" ").map(encodeURIComponent).join("%20") + "?v=20261009";
+const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split(" ").map(encodeURIComponent).join("%20");
 function parseCSV(text){
  const first=(text.split(/\r?\n/,1)[0]||""); const delim=first.includes("\t")?"\t":",";
  const rows=[];let row=[],field="",quoted=false;
@@ -100,7 +100,6 @@ const groupInfo={
  furniture:{id:"salon",title:"Tables & salon",kicker:"Mobilier CNC",intro:"Inspirez-vous des modèles et demandez une réalisation adaptée à votre espace."},
  ornament:{id:"decoration",title:"Ornements & décoration",kicker:"Décoration",intro:"Motifs décoratifs et calligraphies disponibles comme références de projet."},
  tool:{id:"outils",title:"Machines, outils & accessoires CNC",kicker:"Équipement atelier",intro:"Produits et accessoires provenant des CSV de CNC et de DealZone."},
- router:{id:"cnc-router",title:"CNC Router — machines & pièces",kicker:"Catalogue DealZone · CNC Router",intro:"Les produits CNC Router du fichier CSV de DealZone apparaissent ici après les autres catalogues. Cliquez sur un produit pour consulter le vendeur."},
  other:{id:"autres",title:"Autres catalogues",kicker:"Autres produits",intro:"Produits chargés depuis les autres dépôts GitHub listés. Ouvrez la fiche pour vérifier les informations et le vendeur."}
 };
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
@@ -136,7 +135,7 @@ function filtered(){
 }
 function render(){
  const host=document.getElementById("sections"),list=filtered();host.innerHTML="";
- const order=["door","panel","furniture","ornament","tool","other","router"];
+ const order=["door","panel","furniture","ornament","tool","other"];
  let shown=0;
  order.forEach((g,idx)=>{
   const group=list.filter(p=>p.group===g);if(!group.length)return;shown+=group.length;
@@ -151,7 +150,7 @@ function render(){
 async function load(){
  const note=document.createElement("div");note.className="empty";note.textContent="Chargement des modèles et des outils…";document.getElementById("sections").appendChild(note);
  const results=await Promise.all(SOURCES.map(async src=>{
-  try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title&&p.image);if(src.repo==="dealzone")rows=rows.filter(p=>p.link&&relevantTool(p));if(src.file==="CNC Routers & Machinery.csv")console.info("CNC Router CSV products loaded:",rows.length);return rows}
+  try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title&&p.image);if(src.repo==="dealzone")rows=rows.filter(p=>p.link&&relevantTool(p));return rows}
   catch(e){console.warn("Source non chargée:",src.repo,e);return []}
  }));
  const seen=new Set();products=results.flat().filter(p=>{const key=(low(p.title)+"|"+low(p.image)).trim();if(seen.has(key))return false;seen.add(key);return true;});
