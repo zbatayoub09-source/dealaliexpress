@@ -44,17 +44,15 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 <footer><div class="wrap foot"><div><strong>CNC FORGE MAROC</strong><p>Décoration et fabrication CNC sur commande, ainsi qu'une sélection de machines et d'accessoires. Les modèles de décoration sont des références visuelles : dimensions, matériaux, prix et faisabilité sont à confirmer avant fabrication.</p></div><div><strong>Informations</strong><p>Les produits d'équipement renvoient vers des vendeurs externes. Certains liens peuvent être des liens de recommandation. <br><a href="#portes">Voir les modèles</a> · <a href="#outils">Voir les outils</a></p></div></div></footer>
 <script>
 const SOURCES = [
- {repo:"porte-cnc",title:"Portes CNC",id:"portes",group:"door",kind:"made",desc:"Portes décoratives — fabrication selon vos dimensions",filter:"door"},
- {repo:"CNC-Moroccan-Door-Library",title:"Portes marocaines",id:"portes",group:"door",kind:"made",desc:"Motifs marocains et géométriques",filter:"door"},
- {repo:"panel-cnc-maroc",title:"Panneaux décoratifs",id:"panneaux",group:"panel",kind:"made",desc:"Panneaux et claustras décoratifs",filter:"panel"},
- {repo:"decorations",title:"Décoration CNC",id:"decoration",group:"ornament",kind:"made",desc:"Décoration et ornements à réaliser sur commande",filter:"ornament"},
- {repo:"taksima",title:"Motifs & séparations",id:"decoration",group:"ornament",kind:"made",desc:"Motifs décoratifs CNC",filter:"ornament"},
- {repo:"Twable",title:"Tables CNC",id:"salon",group:"furniture",kind:"made",desc:"Modèles de tables — dimensions sur demande",filter:"furniture"},
- {repo:"Salone-cnc",title:"Salon & mobilier",id:"salon",group:"furniture",kind:"made",desc:"Modèles de mobilier et salon",filter:"furniture"},
- {repo:"maganat-cnc",title:"Horloges & décor",id:"decoration",group:"ornament",kind:"made",desc:"Modèles décoratifs",filter:"ornament"},
- {repo:"1-creative-Qoran",title:"Calligraphie & ornements",id:"decoration",group:"ornament",kind:"made",desc:"Motifs décoratifs et calligraphie",filter:"ornament"},
- {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Routeurs & machines CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Machines et équipements CNC",filter:"tool"},
- {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Outils sélectionnés pour l'atelier CNC",filter:"tool"}
+ {repo:"porte-cnc",title:"Portes CNC",id:"portes",group:"door",kind:"made",desc:"Modèle de référence — fabrication uniquement après confirmation du devis",filter:"door"},
+ {repo:"CNC-Moroccan-Door-Library",title:"Portes marocaines",id:"portes",group:"door",kind:"made",desc:"Modèle de référence — dimensions et prix à confirmer",filter:"door"},
+ {repo:"panel-cnc-maroc",title:"Panneaux décoratifs",id:"panneaux",group:"panel",kind:"made",desc:"Modèle de référence — réalisation sur commande",filter:"panel"},
+ {repo:"decorations",title:"Décoration CNC",id:"decoration",group:"ornament",kind:"made",desc:"Idée de décoration — faisabilité à confirmer avant commande",filter:"ornament"},
+ {repo:"Twable",title:"Tables CNC",id:"salon",group:"furniture",kind:"made",desc:"Modèle de table — dimensions, matériau et prix à confirmer",filter:"furniture"},
+ {repo:"maganat-cnc",title:"Horloges & décor",id:"decoration",group:"ornament",kind:"made",desc:"Modèle décoratif — fabrication sur commande après devis",filter:"ornament"},
+ {repo:"1-creative-Qoran",title:"Calligraphie & ornements",id:"decoration",group:"ornament",kind:"made",desc:"Référence décorative — faisabilité à confirmer",filter:"ornament"},
+ {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du catalogue CNC de DealZone",filter:"tool"},
+ {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du catalogue DealZone — vérifiez les détails chez le vendeur",filter:"tool"}
 ];
 const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split(" ").map(encodeURIComponent).join("%20");
 function parseCSV(text){
@@ -77,7 +75,12 @@ function normalize(row,src){
  const isTool=src.kind==="affiliate";
  return {title,image,link,price,old,src,desc:src.desc,kind:src.kind,group:src.group};
 }
-function relevantTool(p){return /\bcnc\b|router|spindle|collet|engraving|engraver|milling|woodworking|cutting tool|tool bit|v-bit|end mill|laser|stepper motor|linear rail|ballscrew|vacuum pump|dust shoe|limit switch|controller|grbl|mach3|ncstudio|machine|cutter|carbide|flute|drill bit|clamp|workholding|coolant|waterjet|water jet|cnc axis|cnc table/i.test(p.title)}
+function relevantTool(p){
+ const t=low(p.title);
+ const exclude=/phone case|smartphone|iphone|samsung galaxy|bikini|swimwear|clothing|dress|shoes|jewelry|earring|necklace|watch band|audio amplifier|hi-fi|nas digital|router and switch|home decor|kitchen|toy|pet supplies|cosplay/i;
+ if(exclude.test(t))return false;
+ return /\\bcnc\\b|cnc router|cnc milling|cnc engraving|cnc machine|cnc water ?jet|cnc lathe|cnc axis|cnc table|cnc tool|cnc clamp|cnc controller|cnc spindle|cnc vacuum|cnc linear|router bit|router collet|spindle motor|er11|er16|er20|grbl|mach3|ncstudio|stepper motor|ballscrew|ball screw|linear rail|linear bearing|tool setter|touch plate|end mill|v-bit|v groove bit|carbide bit|dust shoe|workholding clamp|sbr\\d+uu|lm\\d+uu/i.test(t);
+}
 let products=[],activeFilter="all",query="";
 const groupInfo={
  door:{id:"portes",title:"Portes CNC sur mesure",kicker:"Collection portes",intro:"Choisissez un modèle. Les dimensions, le matériau, le prix et le délai seront confirmés avant fabrication."},
@@ -122,7 +125,7 @@ async function load(){
   try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title&&p.image);if(src.kind==="affiliate")rows=rows.filter(p=>p.link&&relevantTool(p));return rows}
   catch(e){console.warn("Source non chargée:",src.repo,e);return []}
  }));
- products=results.flat();
+ const seen=new Set();products=results.flat().filter(p=>{const key=(low(p.title)+"|"+low(p.image)).trim();if(seen.has(key))return false;seen.add(key);return true;});
  document.getElementById("sections").innerHTML="";
  render();
  if(!products.length){document.getElementById("sections").innerHTML='<div class="empty">Les catalogues ne se sont pas chargés. Réessayez dans quelques instants.</div>'}
