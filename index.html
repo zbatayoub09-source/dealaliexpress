@@ -102,7 +102,7 @@ function money(s){if(!s)return "";return s.replace(/^([A-Z]{3})\s*/,"$1 ").trim(
 function card(p){
  const orderText="Bonjour, je souhaite demander un devis pour : "+p.title+". Merci de me confirmer les dimensions possibles, le matériau, le prix et le délai.";
  const href=p.kind==="affiliate"?(p.link||("https://github.com/zbatayoub09-source/"+encodeURIComponent(p.src.repo))):"https://wa.me/?text="+encodeURIComponent(orderText);
- const btn=p.kind==="affiliate"?"Voir le produit ↗":"Demander un devis ↗";
+ const btn=p.kind==="affiliate"?(p.link?"Voir le produit ↗":"Voir le catalogue ↗"):"Demander un devis ↗";
  const price=p.kind==="affiliate"&&p.price?'<div class="price">'+esc(money(p.price))+(p.old?'<small> · Avant '+esc(money(p.old))+'</small>':"")+'</div>':'<div class="meta">Fabrication sur commande · Prix sur devis</div>';
  return '<article class="card '+(p.kind==="affiliate"?"equipment":"")+'"><div class="pic">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="this.style.display=\'none\';this.parentElement.insertAdjacentHTML(\'beforeend\',\'<span>Image indisponible</span>\')">':'<span>Modèle CNC</span>')+'<span class="tag">'+(p.kind==="affiliate"?"ÉQUIPEMENT":"SUR COMMANDE")+'</span></div><div class="cardbody"><h3>'+esc(p.title)+'</h3><div class="meta">'+esc(p.desc)+'</div>'+price+'<a class="cardbtn" href="'+esc(href)+'" '+(p.kind==="affiliate"?'target="_blank" rel="noopener"':'target="_blank" rel="noopener"')+'>'+btn+'</a></div></article>';
 }
@@ -130,7 +130,7 @@ function render(){
 async function load(){
  const note=document.createElement("div");note.className="empty";note.textContent="Chargement des modèles et des outils…";document.getElementById("sections").appendChild(note);
  const results=await Promise.all(SOURCES.map(async src=>{
-  try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title&&p.image);if(src.repo==="dealzone")rows=rows.filter(p=>p.link&&relevantTool(p));else if(src.kind==="affiliate")rows=rows.filter(p=>p.link);return rows}
+  try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title&&p.image);if(src.repo==="dealzone")rows=rows.filter(p=>p.link&&relevantTool(p));return rows}
   catch(e){console.warn("Source non chargée:",src.repo,e);return []}
  }));
  const seen=new Set();products=results.flat().filter(p=>{const key=(low(p.title)+"|"+low(p.image)).trim();if(seen.has(key))return false;seen.add(key);return true;});
