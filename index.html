@@ -49,7 +49,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 <div class="top"><div class="wrap"><span>🇲🇦 CNC Forge Maroc — décoration sur mesure</span><span><b>Fabrication sur commande</b> · Outils CNC sélectionnés</span></div></div>
 <header><div class="wrap nav">
 <a class="brand" href="#"><span class="mark">CNC</span><span>CNC FORGE<small>MAROC · DESIGN & TOOLS</small></span></a>
-<nav class="links"><a href="#portes">Portes</a><a href="#panneaux">Panneaux</a><a href="#salon">Tables & salon</a><a href="#decoration">Décoration</a><a href="#outils">Outils CNC</a></nav>
+<nav class="links"><a href="category.html?cat=door">Portes</a><a href="category.html?cat=panel">Panneaux</a><a href="category.html?cat=furniture">Tables & salon</a><a href="category.html?cat=ornament">Décoration</a><a href="category.html?cat=tool">Outils CNC</a></nav>
 <label class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="Rechercher un modèle ou un outil…"></label>
 </div></header>
 <main class="wrap">
@@ -59,7 +59,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 </div>
 <div class="trust"><div><span class="ico">📐</span><span><strong>Sur mesure</strong><small>Dimensions à confirmer avant fabrication</small></span></div><div><span class="ico">🪵</span><span><strong>Fabriqué à la commande</strong><small>Pas de stock annoncé à tort</small></span></div><div><span class="ico">⚙️</span><span><strong>Équipement CNC</strong><small>Liens de produits pour votre atelier</small></span></div></div>
 </section>
-<div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><button class="chip" data-filter="door">Portes</button><button class="chip" data-filter="panel">Panneaux</button><button class="chip" data-filter="furniture">Tables & salon</button><button class="chip" data-filter="ornament">Ornements</button><button class="chip" data-filter="tool">Outils CNC</button></div>
+<div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><a class="chip" href="category.html?cat=door">Portes ↗</a><a class="chip" href="category.html?cat=panel">Panneaux ↗</a><a class="chip" href="category.html?cat=furniture">Tables & salon ↗</a><a class="chip" href="category.html?cat=ornament">Ornements ↗</a><a class="chip" href="category.html?cat=tool">Outils CNC ↗</a></div>
 <div id="sections"></div>
 <div class="banner"><div><h3>Un modèle vous intéresse ?</h3><p>Envoyez le modèle choisi et les dimensions souhaitées. Le prix et le délai sont confirmés avant de lancer la fabrication.</p></div><a class="btn" href="https://wa.me/212622765085?text=Bonjour%2C%20je%20souhaite%20un%20renseignement%20sur%20une%20commande%20CNC." target="_blank" rel="noopener">Contacter sur WhatsApp ↗</a></div>
 
@@ -176,12 +176,13 @@ function imageFallback(img){
  note.style.cssText="padding:12px;text-align:center;color:#687386;font-size:12px";
  img.parentElement.appendChild(note);
 }
+function productPageUrl(p){
+ return "product.html?src="+encodeURIComponent(p.src.repo)+"&title="+encodeURIComponent(p.title);
+}
 function card(p){
  const tags=makeHashtags(p);
- const button=p.kind==="affiliate"
-  ?'<a class="cardbtn" href="'+esc(p.link||("https://github.com/zbatayoub09-source/"+encodeURIComponent(p.src.repo)))+'" target="_blank" rel="noopener">'+(p.link?"Voir le produit ↗":"Voir le catalogue ↗")+'</a>'
-  :'<button class="cardbtn made-contact-btn" type="button" data-product="'+esc(p.title)+'" data-description="'+esc(p.desc)+'" data-image="'+esc(p.image||"")+'">Demander un devis ↗</button>';
- return '<article class="card '+(p.kind==="affiliate"?"equipment":"")+'"><div class="pic">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="imageFallback(this)">':'<span>Modèle CNC</span>')+'<span class="tag">'+(p.kind==="affiliate"?"ÉQUIPEMENT":"SUR COMMANDE")+'</span></div><div class="cardbody"><h3>'+esc(p.title)+'</h3><div class="meta">'+esc(p.desc)+'</div><div class="hashtags" aria-label="Hashtags">'+esc(tags)+'</div>'+button+'</div></article>';
+ const button='<a class="cardbtn" href="'+esc(productPageUrl(p))+'">Voir le détail ↗</a>';
+ return '<article class="card '+(p.kind==="affiliate"?"equipment":"")+'"><a class="pic" href="'+esc(productPageUrl(p))+'">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="imageFallback(this)">':'<span>Modèle CNC</span>')+'<span class="tag">'+(p.kind==="affiliate"?"ÉQUIPEMENT":"SUR COMMANDE")+'</span></a><div class="cardbody"><h3>'+esc(p.title)+'</h3><div class="meta">'+esc(p.desc)+'</div><div class="hashtags" aria-label="Hashtags">'+esc(tags)+'</div>'+button+'</div></article>';
 }
 function filtered(){
  return products.filter(p=>{
@@ -247,7 +248,14 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeContactModal()}
 document.getElementById("search").addEventListener("input",e=>{query=e.target.value.trim();render()});
 document.getElementById("chips").addEventListener("click",e=>{const b=e.target.closest("button[data-filter]");if(!b)return;activeFilter=b.dataset.filter;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c===b));render()});
 load().then(()=>{
- setInterval(()=>{document.querySelectorAll(".track").forEach((track,i)=>{if(track.scrollWidth<=track.clientWidth+5)return;const max=track.scrollWidth-track.clientWidth;let next=track.scrollLeft+(i%2===0?250:-250);if(next>=max-2)next=0;if(next<0)next=max;track.scrollTo({left:next,behavior:"smooth"})})},5000);
+ setInterval(()=>{document.querySelectorAll(".track").forEach(track=>{
+  if(track.querySelectorAll(".card").length<=5 || track.scrollWidth<=track.clientWidth+5)return;
+  const card=track.querySelector(".card");
+  const step=card ? card.getBoundingClientRect().width+14 : 244;
+  const max=track.scrollWidth-track.clientWidth;
+  if(track.scrollLeft>=max-8)track.scrollTo({left:0,behavior:"smooth"});
+  else track.scrollBy({left:step,behavior:"smooth"});
+ })},3500);
 });
 </script>
 </body></html>
