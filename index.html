@@ -19,6 +19,27 @@ header{position:sticky;top:0;z-index:10;background:#ffffffed;backdrop-filter:blu
 .track{display:grid;grid-auto-flow:column;grid-auto-columns:230px;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 2px 16px;overscroll-behavior-inline:contain}.track::-webkit-scrollbar{display:none}.card{scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:315px;transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-3px);box-shadow:0 16px 35px #10182716}.pic{height:185px;background:#f0f2f6;display:grid;place-items:center;overflow:hidden;position:relative}.pic img{width:100%;height:100%;object-fit:contain;padding:10px;mix-blend-mode:multiply}.tag{position:absolute;top:10px;left:10px;background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:5px 8px;font-size:9px;font-weight:900;color:#4b5563}.cardbody{padding:13px;display:flex;flex-direction:column;flex:1}.card h3{font-size:13px;line-height:1.45;margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:55px}.meta{color:var(--muted);font-size:11px;line-height:1.5;margin-bottom:10px}.price{font-size:16px;font-weight:950;margin:0 0 11px}.price small{font-size:10px;font-weight:650;color:var(--muted)}.cardbtn{margin-top:auto;text-align:center;display:block;border-radius:10px;padding:10px;font-size:11px;font-weight:900;background:#fff1eb;color:#d94b20;border:1px solid #ffddce}.cardbtn:hover{background:var(--orange);color:#fff}.equipment .cardbtn{background:var(--navy);color:#fff;border-color:var(--navy)}.equipment .cardbtn:hover{background:var(--orange);border-color:var(--orange)}
 .empty{background:#fff;border:1px dashed #cbd2dd;padding:30px;border-radius:16px;color:var(--muted);font-size:13px;text-align:center}.loadnote{font-size:11px;color:var(--muted);margin:8px 2px 0}.banner{background:#fff;border:1px solid var(--line);border-radius:20px;padding:23px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin:35px 0}.banner h3{margin:0 0 7px;font-size:20px}.banner p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}.banner .btn{white-space:nowrap;background:var(--navy);color:#fff}
 footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot strong{color:#fff}.foot p{font-size:11px;color:#a9b4c5;line-height:1.7;max-width:700px}.foot a{color:#ffb18a}
+
+.modal-backdrop{position:fixed;inset:0;z-index:100;background:#08111fd1;display:none;align-items:center;justify-content:center;padding:18px;overflow:auto}
+.modal-backdrop.open{display:flex}
+.contact-modal{position:relative;background:#fff;width:min(680px,100%);max-height:calc(100vh - 36px);overflow:auto;border-radius:22px;padding:27px;box-shadow:0 24px 80px #0005}
+.modal-close{position:absolute;right:15px;top:12px;width:38px;height:38px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;font-size:25px;cursor:pointer}
+.contact-modal h2{padding-right:35px;margin:7px 0 15px}
+.selected-product{display:flex;gap:13px;align-items:center;background:#f6f7fa;border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:14px}
+.selected-product img{width:78px;height:78px;object-fit:contain;border-radius:9px;background:#fff}
+.selected-product strong{font-size:14px}
+.selected-product p,.form-note{font-size:12px;color:var(--muted);line-height:1.6;margin:5px 0}
+#contact-form label{display:block;font-size:12px;font-weight:800;margin:12px 0;color:#354052}
+#contact-form input,#contact-form textarea{display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #dce1e9;border-radius:10px;background:#fff;outline:none;color:var(--ink)}
+#contact-form input:focus,#contact-form textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px #ff713d1c}
+#contact-form textarea{resize:vertical}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 13px}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.form-actions .primary{border:0}
+.form-cancel{background:#eef1f5;color:#303b4c}
+.privacy-note{font-size:10px;color:var(--muted);margin:12px 0 0}
+@media(max-width:560px){.contact-modal{padding:22px 16px}.form-grid{grid-template-columns:1fr}.selected-product img{width:60px;height:60px}}
+
 @media(max-width:900px){.nav{flex-wrap:wrap;padding:13px 0;gap:12px}.links{order:3;width:100%;margin:0;overflow:auto;padding:4px 0}.searchbox{margin-left:auto;width:min(270px,50vw)}.hero-panel{grid-template-columns:1fr;padding:30px}.hero-art{display:none}.hero-panel{min-height:0}.trust{grid-template-columns:1fr}.section-head{align-items:start}.section-head p{max-width:540px}}
 @media(max-width:560px){.wrap{width:calc(100% - 22px)}.top .wrap{justify-content:center}.brand{font-size:19px}.searchbox{order:2;width:100%;margin:0}.nav{gap:11px}.hero{padding-top:18px}.hero-panel{padding:25px 21px;border-radius:21px}.hero h1{font-size:32px}.track{grid-auto-columns:72vw}.pic{height:195px}.section-head{gap:8px}.section-head p{font-size:12px}.banner{align-items:flex-start;flex-direction:column}.controls{gap:5px}.arrow{width:33px;height:33px}}
 </style>
@@ -40,6 +61,36 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 <div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><button class="chip" data-filter="door">Portes</button><button class="chip" data-filter="panel">Panneaux</button><button class="chip" data-filter="furniture">Tables & salon</button><button class="chip" data-filter="ornament">Ornements</button><button class="chip" data-filter="tool">Outils CNC</button></div>
 <div id="sections"></div>
 <div class="banner"><div><h3>Un modèle vous intéresse ?</h3><p>Envoyez le modèle choisi et les dimensions souhaitées. Le prix et le délai sont confirmés avant de lancer la fabrication.</p></div><a class="btn" href="https://wa.me/212622765085?text=Bonjour%2C%20je%20souhaite%20un%20renseignement%20sur%20une%20commande%20CNC." target="_blank" rel="noopener">Contacter sur WhatsApp ↗</a></div>
+
+<div class="modal-backdrop" id="contact-modal" aria-hidden="true">
+ <section class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+  <button class="modal-close" type="button" id="close-contact" aria-label="Fermer">×</button>
+  <div class="kicker">Demande de devis</div>
+  <h2 id="contact-title">Parlons de votre modèle CNC</h2>
+  <div class="selected-product">
+   <img id="contact-product-image" alt="" hidden>
+   <div><strong id="contact-product-title">Modèle CNC</strong><p id="contact-product-description"></p></div>
+  </div>
+  <p class="form-note">Remplissez ce formulaire. Votre demande sera envoyée par e-mail, avec le nom du modèle choisi.</p>
+  <form id="contact-form" action="https://formsubmit.co/zbatayoub09@gmail.com" method="POST">
+   <input type="hidden" name="_subject" id="form-subject" value="Nouvelle demande CNC Forge Maroc">
+   <input type="hidden" name="_template" value="table">
+   <input type="hidden" name="_captcha" value="true">
+   <input type="hidden" name="Produit demandé" id="form-product" value="">
+   <input type="hidden" name="Page du produit" id="form-page" value="">
+   <div class="form-grid">
+    <label>Votre nom *<input name="Nom" autocomplete="name" required maxlength="100" placeholder="Nom et prénom"></label>
+    <label>Téléphone / WhatsApp *<input name="Téléphone" autocomplete="tel" required maxlength="40" placeholder="+212…"></label>
+    <label>Votre e-mail<input type="email" name="E-mail du client" autocomplete="email" maxlength="150" placeholder="vous@exemple.com"></label>
+    <label>Ville au Maroc<input name="Ville" autocomplete="address-level2" maxlength="80" placeholder="Votre ville"></label>
+   </div>
+   <label>Votre message *<textarea name="Message" id="form-message" required maxlength="3000" rows="4" placeholder="Dimensions, matériau souhaité, quantité ou question…"></textarea></label>
+   <div class="form-actions"><button class="btn primary" type="submit">Envoyer la demande ↗</button><button class="btn form-cancel" id="cancel-contact" type="button">Annuler</button></div>
+   <p class="privacy-note">Vos informations servent uniquement à répondre à cette demande.</p>
+  </form>
+ </section>
+</div>
+
 </main>
 <footer><div class="wrap foot"><div><strong>CNC FORGE MAROC</strong><p>Décoration et fabrication CNC sur commande, ainsi qu'une sélection de machines et d'accessoires. Les modèles de décoration sont des références visuelles : dimensions, matériaux, prix et faisabilité sont à confirmer avant fabrication.</p></div><div><strong>Informations</strong><p>Les produits d'équipement renvoient vers des vendeurs externes. Certains liens peuvent être des liens de recommandation. <br><a href="#portes">Voir les modèles</a> · <a href="#outils">Voir les outils</a></p></div></div></footer>
 <script>
@@ -120,11 +171,11 @@ function imageFallback(img){
  img.parentElement.appendChild(note);
 }
 function card(p){
- const orderText="Bonjour, je souhaite demander un devis pour : "+p.title+". Merci de me confirmer les dimensions possibles, le matériau, le prix et le délai.";
- const href=p.kind==="affiliate"?(p.link||("https://github.com/zbatayoub09-source/"+encodeURIComponent(p.src.repo))):"https://wa.me/212622765085?text="+encodeURIComponent(orderText);
- const btn=p.kind==="affiliate"?(p.link?"Voir le produit ↗":"Voir le catalogue ↗"):"Demander un devis ↗";
  const price=p.kind==="affiliate"&&p.price?'<div class="price">'+esc(money(p.price))+(p.old?'<small> · Avant '+esc(money(p.old))+'</small>':"")+'</div>':'<div class="meta">Fabrication sur commande · Prix sur devis</div>';
- return '<article class="card '+(p.kind==="affiliate"?"equipment":"")+'"><div class="pic">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="imageFallback(this)">':'<span>Modèle CNC</span>')+'<span class="tag">'+(p.kind==="affiliate"?"ÉQUIPEMENT":"SUR COMMANDE")+'</span></div><div class="cardbody"><h3>'+esc(p.title)+'</h3><div class="meta">'+esc(p.desc)+'</div>'+price+'<a class="cardbtn" href="'+esc(href)+'" '+(p.kind==="affiliate"?'target="_blank" rel="noopener"':'target="_blank" rel="noopener"')+'>'+btn+'</a></div></article>';
+ const button=p.kind==="affiliate"
+  ?'<a class="cardbtn" href="'+esc(p.link||("https://github.com/zbatayoub09-source/"+encodeURIComponent(p.src.repo)))+'" target="_blank" rel="noopener">'+(p.link?"Voir le produit ↗":"Voir le catalogue ↗")+'</a>'
+  :'<button class="cardbtn made-contact-btn" type="button" data-product="'+esc(p.title)+'" data-description="'+esc(p.desc)+'" data-image="'+esc(p.image||"")+'">Demander un devis ↗</button>';
+ return '<article class="card '+(p.kind==="affiliate"?"equipment":"")+'"><div class="pic">'+(p.image?'<img loading="lazy" src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="imageFallback(this)">':'<span>Modèle CNC</span>')+'<span class="tag">'+(p.kind==="affiliate"?"ÉQUIPEMENT":"SUR COMMANDE")+'</span></div><div class="cardbody"><h3>'+esc(p.title)+'</h3><div class="meta">'+esc(p.desc)+'</div>'+price+button+'</div></article>';
 }
 function filtered(){
  return products.filter(p=>{
@@ -158,6 +209,26 @@ async function load(){
  render();
  if(!products.length){document.getElementById("sections").innerHTML='<div class="empty">Les catalogues ne se sont pas chargés. Réessayez dans quelques instants.</div>'}
 }
+
+document.getElementById("sections").addEventListener("click",e=>{
+ const b=e.target.closest(".made-contact-btn");if(!b)return;
+ const title=b.dataset.product||"Modèle CNC",desc=b.dataset.description||"",img=b.dataset.image||"";
+ document.getElementById("contact-product-title").textContent=title;
+ document.getElementById("contact-product-description").textContent=desc;
+ const image=document.getElementById("contact-product-image");
+ image.hidden=!img;image.src=img;image.alt=title;
+ document.getElementById("form-product").value=title;
+ document.getElementById("form-subject").value="Demande de devis CNC : "+title;
+ document.getElementById("form-page").value=location.href.split("#")[0];
+ document.getElementById("form-message").value="Bonjour, je souhaite un devis pour : "+title+".\nDimensions souhaitées :\nMatériau :\nQuantité :\nMa question : ";
+ const modal=document.getElementById("contact-modal");modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+});
+function closeContactModal(){const modal=document.getElementById("contact-modal");modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+document.getElementById("close-contact").addEventListener("click",closeContactModal);
+document.getElementById("cancel-contact").addEventListener("click",closeContactModal);
+document.getElementById("contact-modal").addEventListener("click",e=>{if(e.target.id==="contact-modal")closeContactModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeContactModal()});
+
 document.getElementById("search").addEventListener("input",e=>{query=e.target.value.trim();render()});
 document.getElementById("chips").addEventListener("click",e=>{const b=e.target.closest("button[data-filter]");if(!b)return;activeFilter=b.dataset.filter;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c===b));render()});
 load().then(()=>{
