@@ -73,10 +73,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
    <div><strong id="contact-product-title">Modèle CNC</strong><p id="contact-product-description"></p></div>
   </div>
   <p class="form-note">Remplissez ce formulaire. Votre demande sera envoyée par e-mail, avec le nom du modèle choisi.</p>
-  <form id="contact-form" action="https://formsubmit.co/zbatayoub09@gmail.com" method="POST">
-   <input type="hidden" name="_subject" id="form-subject" value="Nouvelle demande CNC Forge Maroc">
-   <input type="hidden" name="_template" value="table">
-   <input type="hidden" name="_captcha" value="true">
+  <form id="contact-form" action="https://script.google.com/macros/s/AKfycbyJvTzu2ablIo4f2yTy-6L98CNPQZWJqLFCq9x5kLsKmRGkup95Je-L-9FJIpaEg7CDAw/exec" method="POST" target="_blank">
    <input type="hidden" name="Produit demandé" id="form-product" value="">
    <input type="hidden" name="Page du produit" id="form-page" value="">
    <div class="form-grid">
@@ -87,6 +84,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
    </div>
    <label>Votre message *<textarea name="Message" id="form-message" required maxlength="3000" rows="4" placeholder="Dimensions, matériau souhaité, quantité ou question…"></textarea></label>
    <div class="form-actions"><button class="btn primary" type="submit">Envoyer la demande ↗</button><button class="btn form-cancel" id="cancel-contact" type="button">Annuler</button></div>
+   <p id="form-status" class="form-note" role="status" aria-live="polite"></p>
    <p class="privacy-note">Vos informations servent uniquement à répondre à cette demande.</p>
   </form>
  </section>
@@ -226,10 +224,19 @@ document.getElementById("sections").addEventListener("click",e=>{
  const image=document.getElementById("contact-product-image");
  image.hidden=!img;image.src=img;image.alt=title;
  document.getElementById("form-product").value=title;
- document.getElementById("form-subject").value="Demande de devis CNC : "+title;
- document.getElementById("form-page").value=location.href.split("#")[0];
+  document.getElementById("form-page").value=location.href.split("#")[0];
+  document.getElementById("form-status").textContent="";
+  const submitButton=document.querySelector("#contact-form button[type=submit]");
+  submitButton.disabled=false;submitButton.textContent="Envoyer la demande ↗";
  document.getElementById("form-message").value="Bonjour, je souhaite un devis pour : "+title+".\nDimensions souhaitées :\nMatériau :\nQuantité :\nMa question : ";
  const modal=document.getElementById("contact-modal");modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+});
+document.getElementById("contact-form").addEventListener("submit",()=>{
+ const status=document.getElementById("form-status");
+ status.textContent="Le résultat de l’envoi s’ouvrira dans un nouvel onglet. Vérifiez le message affiché par Google Apps Script.";
+ const submitButton=document.querySelector("#contact-form button[type=submit]");
+ submitButton.disabled=true;submitButton.textContent="Envoi en cours…";
+ setTimeout(()=>{submitButton.disabled=false;submitButton.textContent="Envoyer la demande ↗"},5000);
 });
 function closeContactModal(){const modal=document.getElementById("contact-modal");modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""}
 document.getElementById("close-contact").addEventListener("click",closeContactModal);
