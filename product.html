@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101827"><meta name="description" content="Découvrez les détails du produit CNC Forge Maroc."><title>Produit CNC Forge Maroc</title>
+<style>
+:root{--ink:#111827;--muted:#687386;--line:#e7eaf0;--paper:#f5f7fb;--orange:#ff713d;--navy:#101827}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(1050px,calc(100% - 28px));margin:auto}
+.top{background:#0b1220;color:#d8dfeb;font-size:12px;padding:10px}.nav{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 0}.brand{font-weight:950;font-size:20px}.brand small{display:block;font-size:9px;letter-spacing:2px;color:#7b8799;margin-top:3px}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:12px 17px;font-size:13px;font-weight:850;cursor:pointer;background:var(--orange);color:#fff}.secondary{background:var(--navy)}.panel{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 12px 34px #1018270d}.photo{background:#f0f2f6;min-height:390px;display:grid;place-items:center;padding:22px}.photo img{width:100%;height:100%;max-height:520px;object-fit:contain}.info{padding:clamp(22px,4vw,42px)}.kicker{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:#f65328}.info h1{font-size:clamp(25px,4vw,38px);line-height:1.15;letter-spacing:-.8px;margin:12px 0}.desc{color:var(--muted);font-size:14px;line-height:1.8}.hashtags{color:#d94b20;font-size:12px;line-height:1.8;font-weight:750;overflow-wrap:anywhere;margin:18px 0}.notice{background:#fff7f2;border:1px solid #ffddce;border-radius:13px;padding:13px;color:#9b3b1e;font-size:12px;line-height:1.6;margin:18px 0}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.formbox{margin-top:25px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}.formbox h2{margin:0 0 8px}.formbox p{font-size:12px;color:var(--muted);line-height:1.6}.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}label{display:block;font-size:12px;font-weight:800;margin:12px 0;color:#354052}input,textarea{display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #dce1e9;border-radius:10px;background:#fff;font:inherit;font-size:13px}textarea{resize:vertical}.status{font-size:12px;color:var(--muted)}footer{padding:28px 0;color:var(--muted);font-size:11px;line-height:1.7}@media(max-width:720px){.panel{grid-template-columns:1fr}.photo{min-height:260px;max-height:350px}.grid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}}
+</style></head><body>
+<div class="top"><div class="wrap">🇲🇦 CNC Forge Maroc — catalogue de modèles & équipement</div></div>
+<header><div class="wrap nav"><a class="brand" href="index.html">CNC FORGE<small>MAROC · DESIGN & TOOLS</small></a><a class="btn secondary" href="index.html">← Retour au catalogue</a></div></header>
+<main class="wrap" style="padding:22px 0 38px">
+<div id="content"><div class="notice">Chargement des informations du produit…</div></div>
+</main><footer><div class="wrap">Les prix, dimensions, matériaux et délais des créations sur mesure sont confirmés avant commande. Les équipements sont vendus par des vendeurs externes.</div></footer>
+<script>
+const SOURCES = [
+ {repo:"porte-cnc",title:"Portes CNC",id:"portes",group:"door",kind:"made",desc:"Modèle de référence — fabrication uniquement après confirmation du devis",filter:"door"},
+ {repo:"CNC-Moroccan-Door-Library",title:"Portes marocaines",id:"portes",group:"door",kind:"made",desc:"Modèle de référence — dimensions et prix à confirmer",filter:"door"},
+ {repo:"panel-cnc-maroc",title:"Panneaux décoratifs",id:"panneaux",group:"panel",kind:"made",desc:"Modèle de référence — réalisation sur commande",filter:"panel"},
+ {repo:"decorations",title:"Décoration CNC",id:"decoration",group:"ornament",kind:"made",desc:"Idée de décoration — faisabilité à confirmer avant commande",filter:"ornament"},
+ {repo:"Twable",title:"Tables CNC",id:"salon",group:"furniture",kind:"made",desc:"Modèle de table — dimensions, matériau et prix à confirmer",filter:"furniture"},
+ {repo:"maganat-cnc",title:"Horloges & décor",id:"decoration",group:"ornament",kind:"made",desc:"Modèle décoratif — fabrication sur commande après devis",filter:"ornament"},
+ {repo:"1-creative-Qoran",title:"Calligraphie & ornements",id:"decoration",group:"ornament",kind:"made",desc:"Référence décorative — faisabilité à confirmer",filter:"ornament"},
+ {repo:"taksima",title:"Taksima — outils & pièces",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du CSV taksima",filter:"tool"},
+ {repo:"Motorcyclecnc",title:"Produits Motorcycle CNC",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du catalogue Motorcyclecnc",filter:"other"},
+ {repo:"Phone-Case-Collection",title:"Coques de téléphone",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du catalogue Phone-Case-Collection",filter:"other"},
+ {repo:"Small-Office-PC",title:"Informatique & PC",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du catalogue Small-Office-PC",filter:"other"},
+ {repo:"slimania-maroc",title:"Catalogue Slimania Maroc",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du CSV slimania-maroc",filter:"other"},
+ {repo:"Salone-cnc",title:"Catalogue Salone CNC",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du CSV Salone-cnc",filter:"other"},
+ {repo:"Quran",title:"Catalogue Quran",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du CSV Quran",filter:"other"},
+ {repo:"-",title:"Autre catalogue",id:"autres",group:"other",kind:"affiliate",desc:"Produit issu du CSV du dépôt",filter:"other"},
+ {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du catalogue CNC de DealZone",filter:"tool"},
+ {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Produit issu du catalogue DealZone — vérifiez les détails chez le vendeur",filter:"tool"}
+];
+const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split(" ").map(encodeURIComponent).join("%20");
+function parseCSV(text){
+ const first=(text.split(/\r?\n/,1)[0]||""); const delim=first.includes("\t")?"\t":",";
+ const rows=[];let row=[],field="",quoted=false;
+ for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){field+='"';i++}else quoted=!quoted}else if(c===delim&&!quoted){row.push(field);field=""}else if((c==="\n"||c==="\r")&&!quoted){if(c==="\r"&&text[i+1]==="\n")i++;row.push(field);if(row.some(v=>v.trim()))rows.push(row);row=[];field=""}else field+=c}
+ row.push(field);if(row.some(v=>v.trim()))rows.push(row);
+ if(!rows.length)return [];
+ const headers=rows.shift().map(x=>x.trim().replace(/^\uFEFF/,""));
+ return rows.map(r=>{const o={};headers.forEach((h,i)=>o[h]=(r[i]||"").trim());return o});
+}
+const low=s=>String(s||"").toLowerCase();
+const pick=(o,keys)=>{for(const k of keys){if(o[k]&&String(o[k]).trim())return String(o[k]).trim()}return ""};
+function normalize(row,src){
+ const title=pick(row,["Title","SEO Title","Product Desc","Product Title","Name","title","name"])||"Modèle CNC";
+ let image=pick(row,["Image","Image Url","Image URL","image","image_url","Product Image"]);
+ if(image){
+  image=image.trim().replace(/&amp;/g,"&");
+  const driveId=(image.match(/[?&]id=([^&]+)/)||[])[1]||(image.match(/drive\.google\.com\/(?:file\/d\/|open\?id=)([A-Za-z0-9_-]+)/)||[])[1];
+  if(driveId && /drive\.google\.com/.test(image)) image="https://drive.google.com/thumbnail?id="+driveId+"&sz=w1000";
+ }
+ const link=pick(row,["Promotion Url","Product Url","Product URL","Affiliate Link","Link","URL"]);
+ const description=pick(row,["Description","Product Description","Short Description","Meta Description","description","product_description"])||src.desc;
+ return {title,image,link,src,desc:description,kind:src.kind,group:src.group};
+}
+function makeHashtags(p){
+ const category={door:["#CNCDoor","#MoroccanDoors"],panel:["#CNCPanels","#DecorativePanels"],furniture:["#CNCFurniture","#MoroccanDecor"],ornament:["#CNCDecor","#CNCOrnaments"],tool:["#CNCTools","#CNCRouter"],other:["#CNCMaroc"]};
+ const clean=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-zA-Z0-9]/g,"");
+ const words=String(p.title||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").match(/[a-zA-Z0-9]+/g)||[];
+ const titleTags=words.filter(w=>w.length>2&&!/with|from|and|the|for|model|made|product|set|new|pcs|piece|inch|mm|cm|maroc|cnc/i.test(w)).slice(0,3).map(w=>"#"+w);
+ const fixed=["#CNC","#CNCMaroc",...(category[p.group]||category.other)];
+ return [...new Set([...titleTags,...fixed])].slice(0,7).join(" ");
+}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+const params=new URLSearchParams(location.search),wantedSrc=params.get("src")||"",wantedTitle=params.get("title")||"";
+async function init(){
+ const content=document.getElementById("content");
+ if(!wantedSrc||!wantedTitle){content.innerHTML='<div class="notice">Lien du produit incomplet. <a href="index.html"><u>Retour au catalogue</u></a>.</div>';return}
+ const src=SOURCES.find(s=>s.repo===wantedSrc);
+ if(!src){content.innerHTML='<div class="notice">Catalogue introuvable. <a href="index.html"><u>Retour au catalogue</u></a>.</div>';return}
+ try{
+  const response=await fetch(rawUrl(src),{cache:"no-store"});if(!response.ok)throw Error("CSV indisponible");
+  const rows=parseCSV(await response.text());
+  let row=rows.find(r=>pick(r,["Title","SEO Title","Product Desc","Product Title","Name","title","name"])===wantedTitle);
+  if(!row)throw Error("Produit introuvable dans le CSV");
+  const p=normalize(row,src);
+  const price=pick(row,["Origin Price","Discount Price","Price","Sale Price","price","Discount Price (USD)"]);
+  const link=pick(row,["Promotion Url","Product Url","Product URL","Affiliate Link","Link","URL"]);
+  const hashtags=makeHashtags(p);
+  document.title=p.title+" — CNC Forge Maroc";
+  const button=p.kind==="affiliate"?(link?'<a class="btn" href="'+esc(link)+'" target="_blank" rel="noopener">Voir le produit chez le vendeur ↗</a>':'<a class="btn" href="https://github.com/zbatayoub09-source/'+encodeURIComponent(src.repo)+'" target="_blank" rel="noopener">Voir le catalogue ↗</a>'):'<a class="btn" href="#devis">Demander un devis ↗</a>';
+  content.innerHTML='<section class="panel"><div class="photo">'+(p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" onerror="this.style.display=\'none\'">':'<span>Photo indisponible</span>')+'</div><div class="info"><div class="kicker">'+(p.kind==="affiliate"?"Équipement & accessoires":"Décoration sur commande")+'</div><h1>'+esc(p.title)+'</h1><div class="desc">'+esc(p.desc)+'</div>'+(price?'<p><strong>Prix affiché :</strong> '+esc(price)+'</p>':'')+'<div class="hashtags">'+esc(hashtags)+'</div>'+(p.kind==="made"?'<div class="notice">Ce modèle sert de référence. Les dimensions, le matériau, le prix et le délai seront confirmés avant fabrication.</div>':'<div class="notice">Vérifiez le prix, les caractéristiques, les frais de livraison et les conditions chez le vendeur avant achat.</div>')+'<div class="actions">'+button+' <button class="btn secondary" onclick="copyLink()">Copier le lien ↗</button></div></div></section>'+
+  (p.kind==="made"?'<section class="formbox" id="devis"><h2>Demander un devis</h2><p>Envoyez les dimensions souhaitées et vos coordonnées pour recevoir une réponse.</p><form id="quote" action="https://script.google.com/macros/s/AKfycbyJvTzu2ablIo4f2yTy-6L98CNPQZWJqLFCq9x5kLsKmRGkup95Je-L-9FJIpaEg7CDAw/exec" method="POST" target="_blank"><input type="hidden" name="Produit demandé" value="'+esc(p.title)+'"><input type="hidden" name="Page du produit" value="'+esc(location.href)+'"><div class="grid"><label>Votre nom *<input name="Nom" required maxlength="100" placeholder="Nom et prénom"></label><label>Téléphone / WhatsApp *<input name="Téléphone" required maxlength="40" placeholder="+212…"></label><label>Votre e-mail<input name="E-mail du client" type="email" maxlength="150" placeholder="vous@exemple.com"></label><label>Ville au Maroc<input name="Ville" maxlength="80" placeholder="Votre ville"></label></div><label>Votre message *<textarea name="Message" required maxlength="3000" rows="4" placeholder="Dimensions, matériau, quantité…"></textarea></label><button class="btn" type="submit">Envoyer la demande ↗</button><p id="status" class="status" aria-live="polite"></p></form></section>':'');
+  const form=document.getElementById("quote");if(form)form.addEventListener("submit",()=>{document.getElementById("status").textContent="Le résultat de l’envoi s’ouvrira dans un nouvel onglet."});
+ }catch(e){content.innerHTML='<div class="notice">Impossible de charger ce produit. Le CSV peut être privé ou le produit a changé de nom. <a href="index.html"><u>Retour au catalogue</u></a>.</div>'}
+}
+function copyLink(){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(location.href).then(()=>alert("Lien copié !")).catch(()=>prompt("Copiez ce lien :",location.href));else prompt("Copiez ce lien :",location.href)}
+init();
+</script></body></html>
