@@ -49,7 +49,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 <div class="top"><div class="wrap"><span>🇲🇦 CNC Forge Maroc — décoration sur mesure</span><span><b>Fabrication sur commande</b> · Outils CNC sélectionnés</span></div></div>
 <header><div class="wrap nav">
 <a class="brand" href="#"><span class="mark">CNC</span><span>CNC FORGE<small>MAROC · DESIGN & TOOLS</small></span></a>
-<nav class="links"><a href="category.html?cat=panel">Panneaux</a><a href="category.html?cat=furniture">Tables & salon</a><a href="category.html?cat=ornament">Décoration</a><a href="category.html?cat=tool">Outils CNC</a></nav>
+<nav class="links"><a href="category.html?cat=tool">Routeurs CNC</a><a href="category.html?cat=clock">Horloges CNC</a></nav>
 <label class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="Rechercher un modèle ou un outil…"></label>
 </div></header>
 <main class="wrap">
@@ -59,7 +59,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 </div>
 <div class="trust"><div><span class="ico">📐</span><span><strong>Sur mesure</strong><small>Dimensions à confirmer avant fabrication</small></span></div><div><span class="ico">🪵</span><span><strong>Fabriqué à la commande</strong><small>Pas de stock annoncé à tort</small></span></div><div><span class="ico">⚙️</span><span><strong>Équipement CNC</strong><small>Liens de produits pour votre atelier</small></span></div></div>
 </section>
-<div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><a class="chip" href="category.html?cat=door">Portes ↗</a><a class="chip" href="category.html?cat=panel">Panneaux ↗</a><a class="chip" href="category.html?cat=furniture">Tables & salon ↗</a><a class="chip" href="category.html?cat=ornament">Ornements ↗</a><a class="chip" href="category.html?cat=tool">Outils CNC ↗</a><a class="chip" href="category.html?cat=phones">Téléphones ↗</a><a class="chip" href="category.html?cat=computers">Informatique ↗</a><a class="chip" href="category.html?cat=apparelMen">Mode homme ↗</a><a class="chip" href="category.html?cat=apparelWomen">Mode femme ↗</a><a class="chip" href="category.html?cat=jewelry">Bijoux ↗</a><a class="chip" href="category.html?cat=watches">Montres ↗</a><a class="chip" href="category.html?cat=motorcycle">Moto ↗</a><a class="chip" href="category.html?cat=offers">Offres ↗</a></div>
+<div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Horloges CNC</button><a class="chip" href="category.html?cat=tool">Routeurs CNC ↗</a><a class="chip" href="category.html?cat=clock">Horloges CNC ↗</a></div>
 <div id="catalog-status" class="catalog-status" role="status">Chargement des catalogues…</div>
 <div id="sections"></div>
 <div class="banner"><div><h3>Un modèle vous intéresse ?</h3><p>Envoyez le modèle choisi et les dimensions souhaitées. Le prix et le délai sont confirmés avant de lancer la fabrication.</p></div><a class="btn" href="https://wa.me/212622765085?text=Bonjour%2C%20je%20souhaite%20un%20renseignement%20sur%20une%20commande%20CNC." target="_blank" rel="noopener">Contacter sur WhatsApp ↗</a></div>
@@ -95,38 +95,8 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 <footer><div class="wrap foot"><div><strong>CNC FORGE MAROC</strong><p>Décoration et fabrication CNC sur commande, ainsi qu'une sélection de machines et d'accessoires. Les modèles de décoration sont des références visuelles : dimensions, matériaux, prix et faisabilité sont à confirmer avant fabrication.</p></div><div><strong>Informations</strong><p>Les produits d'équipement renvoient vers des vendeurs externes. Certains liens peuvent être des liens de recommandation. <br><a href="category.html?cat=ornament">Voir les modèles</a> · <a href="#outils">Voir les outils</a></p></div></div></footer>
 <script>
 const SOURCES = [
- {repo:"dealaliexpress",file:"ayoub/CNC-Moroccan-Door-Library.csv",title:"بيبان مغربية CNC",id:"portes",group:"door",kind:"made",desc:"نماذج أبواب مغربية CNC — التصنيع حسب الطلب بعد الاتفاق",filter:"door"},
- {repo:"porte-cnc",title:"Portes CNC",id:"portes",group:"door",kind:"made",desc:"نماذج أبواب CNC — التصنيع حسب الطلب بعد الاتفاق",filter:"door"},
- {repo:"CNC-Moroccan-Door-Library",title:"Portes marocaines",id:"portes",group:"door",kind:"made",desc:"نماذج أبواب مغربية — الأبعاد والثمن بعد الاتفاق",filter:"door"},
- {repo:"dealaliexpress",file:"ayoub/creative-Qoran.csv",title:"زواقات قرآنية وخط عربي",id:"qoran",group:"ornament",kind:"made",desc:"زواقات وخط عربي للديكور CNC — التفاصيل حسب الطلب",filter:"ornament"},
- {repo:"1-creative-Qoran",title:"Calligraphie & ornements",id:"qoran",group:"ornament",kind:"made",desc:"زواقات وخط عربي للديكور CNC — التفاصيل حسب الطلب",filter:"ornament"},
- {repo:"dealaliexpress",file:"ayoub/Clouck-Cnc.csv",title:"ساعات وحليات CNC",id:"clock-cnc",group:"ornament",kind:"made",desc:"نماذج ساعات CNC للديكور — التصنيع حسب الطلب بعد الاتفاق",filter:"ornament"},
- {repo:"maganat-cnc",title:"Horloges & décor",id:"clock-cnc",group:"ornament",kind:"made",desc:"نماذج ساعات وديكور CNC — التصنيع حسب الطلب بعد الاتفاق",filter:"ornament"},
- {repo:"decorations",title:"Décoration CNC",id:"decoration",group:"ornament",kind:"made",desc:"نماذج ديكور CNC — التفاصيل حسب الطلب",filter:"ornament"},
- {repo:"slimania-maroc",title:"زواقات وملفات CNC",id:"decoration",group:"ornament",kind:"made",desc:"زواقات وملفات CNC — التفاصيل حسب الطلب",filter:"ornament"},
- {repo:"dealaliexpress",file:"ayoub/salone-cnc.csv",title:"ديكور صالونات CNC",id:"salon-designs",group:"furniture",kind:"made",desc:"نماذج ديكور الصالونات — الأبعاد والتصنيع حسب الطلب",filter:"furniture"},
- {repo:"Twable",title:"Tables CNC",id:"salon",group:"furniture",kind:"made",desc:"نماذج طاولات CNC — الأبعاد والثمن بعد الاتفاق",filter:"furniture"},
- {repo:"Salone-cnc",title:"ديكور الصالونات",id:"salon-designs",group:"furniture",kind:"made",desc:"نماذج ديكور الصالونات — التفاصيل حسب الطلب",filter:"furniture"},
- {repo:"dealaliexpress",file:"ayoub/Cach-Ridoux-Maroc.csv",title:"كاش ريدو وديكور النوافذ",id:"rideaux",group:"panel",kind:"made",desc:"نماذج كاش ريدو وديكور النوافذ — التفاصيل حسب الطلب",filter:"panel"},
- {repo:"panel-cnc-maroc",title:"Panneaux décoratifs",id:"panneaux",group:"panel",kind:"made",desc:"نماذج ألواح وclaustras CNC — التصنيع حسب الطلب",filter:"panel"},
- {repo:"dealaliexpress",file:"ayoub/products.csv",title:"كتالوج إضافي",id:"autres",group:"other",kind:"affiliate",desc:"منتجات من الكتالوج الإضافي",filter:"other"},
- {repo:"dealaliexpress",file:"ayoub/Phone-Case-Collection.csv",title:"Coques & accessoires téléphone",id:"telephones",group:"phones",kind:"affiliate",desc:"Produits du catalogue coques et accessoires",filter:"other"},
- {repo:"dealaliexpress",file:"ayoub/Small-Office-PC.csv",title:"Informatique & PC",id:"informatique",group:"computers",kind:"affiliate",desc:"Produits du catalogue informatique",filter:"other"},
- {repo:"Phone-Case-Collection",title:"Coques & accessoires téléphone",id:"telephones",group:"phones",kind:"affiliate",desc:"Produits du catalogue coques et accessoires",filter:"other"},
- {repo:"Small-Office-PC",title:"Informatique & PC",id:"informatique",group:"computers",kind:"affiliate",desc:"Produits du catalogue informatique",filter:"other"},
- {repo:"Motorcyclecnc",title:"Produits Motorcycle CNC",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Produits du catalogue Motorcycle CNC",filter:"other"},
- {repo:"-",title:"Autres modèles CNC",id:"autres",group:"other",kind:"affiliate",desc:"Produits issus du catalogue complémentaire",filter:"other"},
- {repo:"taksima",title:"Taksima — outils & pièces",id:"outils",group:"tool",kind:"affiliate",desc:"Outils et pièces pour atelier CNC",filter:"tool"},
- {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Machines et pièces CNC",filter:"tool",filterTools:true},
- {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Outils et accessoires CNC",filter:"tool",filterTools:true},
- {repo:"dealzone",file:"Deals & Offers.csv",title:"Offres & promotions",id:"offres",group:"offers",kind:"affiliate",desc:"Offres et promotions du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Jewelry.csv",title:"Bijoux & accessoires",id:"bijoux",group:"jewelry",kind:"affiliate",desc:"Bijoux et accessoires du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Motorcycle Accessories.csv",title:"Accessoires moto",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Accessoires moto du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Motorcycles.csv",title:"Moto & équipements",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Produits moto du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Watches.csv",title:"Montres & accessoires",id:"montres",group:"watches",kind:"affiliate",desc:"Montres et accessoires du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"computer§Office.csv",title:"Informatique & bureau",id:"informatique",group:"computers",kind:"affiliate",desc:"Informatique et accessoires de bureau",filter:"other"},
- {repo:"dealzone",file:"ملابس رجالية.csv",title:"ملابس رجالية",id:"vetements-hommes",group:"apparelMen",kind:"affiliate",desc:"منتجات الملابس الرجالية",filter:"other"},
- {repo:"dealzone",file:"ملابس نسائية.csv",title:"ملابس نسائية",id:"vetements-femmes",group:"apparelWomen",kind:"affiliate",desc:"منتجات الملابس النسائية",filter:"other"}
+ {repo:"dealaliexpress",file:"ayoub/clock-cnc.csv",title:"Horloges CNC",id:"clock-cnc",group:"clock",kind:"made",desc:"Modèles d’horloges CNC décoratives — dimensions et fabrication à confirmer",filter:"clock"},
+ {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Routeurs CNC & machines",id:"routeurs-cnc",group:"tool",kind:"affiliate",desc:"Routeurs CNC, machines et équipements pour atelier",filter:"tool",filterTools:true}
 ];
 const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split("/").map(part => encodeURIComponent(part)).join("/");
 function parseCSV(text){
@@ -181,20 +151,8 @@ function relevantTool(p){
 }
 let products=[],activeFilter="all",query="";
 const groupInfo={
- door:{id:"portes",title:"Portes CNC sur mesure",kicker:"Collection portes",intro:"Choisissez un modèle. Les dimensions, le matériau, le prix et le délai seront confirmés avant fabrication."},
- panel:{id:"panneaux",title:"Panneaux & claustras décoratifs",kicker:"Collection panneaux",intro:"Des motifs décoratifs à adapter à votre projet et à vos dimensions."},
- furniture:{id:"salon",title:"Tables & salon",kicker:"Mobilier CNC",intro:"Inspirez-vous des modèles et demandez une réalisation adaptée à votre espace."},
- ornament:{id:"decoration",title:"Ornements & décoration",kicker:"Décoration",intro:"Motifs décoratifs et calligraphies disponibles comme références de projet."},
- tool:{id:"outils",title:"Machines, outils & accessoires CNC",kicker:"Équipement atelier",intro:"Produits et accessoires provenant des CSV de CNC et de DealZone."},
- other:{id:"autres",title:"Autres catalogues",kicker:"Autres produits",intro:"Produits des catalogues complémentaires, avec les informations du vendeur à vérifier."},
- phones:{id:"telephones",title:"Téléphones & accessoires",kicker:"Accessoires mobiles",intro:"Coques, supports et accessoires pour téléphone."},
- computers:{id:"informatique",title:"Informatique & bureau",kicker:"Équipement numérique",intro:"Ordinateurs, accessoires et équipement de bureau."},
- apparelMen:{id:"vetements-hommes",title:"Mode homme",kicker:"Collection homme",intro:"Sélection de vêtements et accessoires pour homme."},
- apparelWomen:{id:"vetements-femmes",title:"Mode femme",kicker:"Collection femme",intro:"Sélection de vêtements et accessoires pour femme."},
- jewelry:{id:"bijoux",title:"Bijoux & accessoires",kicker:"Style & accessoires",intro:"Bijoux et accessoires issus du catalogue produits."},
- watches:{id:"montres",title:"Montres",kicker:"Montres & style",intro:"Sélection de montres et accessoires."},
- motorcycle:{id:"moto",title:"Moto & accessoires",kicker:"Univers moto",intro:"Accessoires et produits liés à la moto."},
- offers:{id:"offres",title:"Offres & promotions",kicker:"Bonnes affaires",intro:"Produits promotionnels issus du catalogue DealZone."}
+ clock:{id:"clock-cnc",title:"Horloges CNC",kicker:"Collection horloges",intro:"Modèles d’horloges décoratives CNC. Choisissez un modèle pour demander les dimensions et les détails de fabrication."},
+ tool:{id:"routeurs-cnc",title:"Routeurs CNC & machines",kicker:"Équipement atelier",intro:"Routeurs CNC et machines pour votre atelier. Vérifiez les caractéristiques et la disponibilité auprès du vendeur."}
 };
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function money(s){if(!s)return "";return s.replace(/^([A-Z]{3})\s*/,"$1 ").trim()}
@@ -230,7 +188,7 @@ function filtered(){
 }
 function render(){
  const host=document.getElementById("sections"),list=filtered();host.innerHTML="";
- const order=["door","panel","furniture","ornament","tool","phones","computers","apparelMen","apparelWomen","jewelry","watches","motorcycle","offers","other"];
+ const order=["clock","tool"];
  let shown=0;
  order.forEach((g,idx)=>{
   const group=list.filter(p=>p.group===g);if(!group.length)return;shown+=group.length;
