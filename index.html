@@ -164,7 +164,7 @@ function money(s){if(!s)return "";return s.replace(/^([A-Z]{3})\s*/,"$1 ").trim(
 function imageFallback(img){
  const current=img.getAttribute("src")||"";
  const id=(current.match(/[?&]id=([^&]+)/)||[])[1];
- if(id && /drive\\.google\\.com/.test(current) && !img.dataset.driveFallback){
+ if(id && /drive\.google\.com/.test(current) && !img.dataset.driveFallback){
   img.dataset.driveFallback="1";
   img.src="https://drive.google.com/uc?export=view&id="+id;
   return;
