@@ -182,7 +182,7 @@ function imageFallback(img){
  img.parentElement.appendChild(note);
 }
 function productPageUrl(p){
- return "product.html?src="+encodeURIComponent(p.src.repo)+"&title="+encodeURIComponent(p.title);
+ return "product.html?src="+encodeURIComponent(p.src.repo)+(p.src.file?"&file="+encodeURIComponent(p.src.file):"")+"&title="+encodeURIComponent(p.title);
 }
 function card(p){
  const tags=makeHashtags(p);
