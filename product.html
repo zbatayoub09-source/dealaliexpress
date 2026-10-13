@@ -12,38 +12,8 @@
 </main><footer><div class="wrap">Les prix, dimensions, matériaux et délais des créations sur mesure sont confirmés avant commande. Les équipements sont vendus par des vendeurs externes.</div></footer>
 <script>
 const SOURCES = [
- {repo:"dealaliexpress",file:"ayoub/CNC-Moroccan-Door-Library.csv",title:"بيبان مغربية CNC",id:"portes",group:"door",kind:"made",desc:"نماذج أبواب مغربية CNC — التصنيع حسب الطلب بعد الاتفاق",filter:"door"},
- {repo:"porte-cnc",title:"Portes CNC",id:"portes",group:"door",kind:"made",desc:"نماذج أبواب CNC — التصنيع حسب الطلب بعد الاتفاق",filter:"door"},
- {repo:"CNC-Moroccan-Door-Library",title:"Portes marocaines",id:"portes",group:"door",kind:"made",desc:"نماذج أبواب مغربية — الأبعاد والثمن بعد الاتفاق",filter:"door"},
- {repo:"dealaliexpress",file:"ayoub/creative-Qoran.csv",title:"زواقات قرآنية وخط عربي",id:"qoran",group:"ornament",kind:"made",desc:"زواقات وخط عربي للديكور CNC — التفاصيل حسب الطلب",filter:"ornament"},
- {repo:"1-creative-Qoran",title:"Calligraphie & ornements",id:"qoran",group:"ornament",kind:"made",desc:"زواقات وخط عربي للديكور CNC — التفاصيل حسب الطلب",filter:"ornament"},
- {repo:"dealaliexpress",file:"ayoub/Clouck-Cnc.csv",title:"ساعات وحليات CNC",id:"clock-cnc",group:"ornament",kind:"made",desc:"نماذج ساعات CNC للديكور — التصنيع حسب الطلب بعد الاتفاق",filter:"ornament"},
- {repo:"maganat-cnc",title:"Horloges & décor",id:"clock-cnc",group:"ornament",kind:"made",desc:"نماذج ساعات وديكور CNC — التصنيع حسب الطلب بعد الاتفاق",filter:"ornament"},
- {repo:"decorations",title:"Décoration CNC",id:"decoration",group:"ornament",kind:"made",desc:"نماذج ديكور CNC — التفاصيل حسب الطلب",filter:"ornament"},
- {repo:"slimania-maroc",title:"زواقات وملفات CNC",id:"decoration",group:"ornament",kind:"made",desc:"زواقات وملفات CNC — التفاصيل حسب الطلب",filter:"ornament"},
- {repo:"dealaliexpress",file:"ayoub/salone-cnc.csv",title:"ديكور صالونات CNC",id:"salon-designs",group:"furniture",kind:"made",desc:"نماذج ديكور الصالونات — الأبعاد والتصنيع حسب الطلب",filter:"furniture"},
- {repo:"Twable",title:"Tables CNC",id:"salon",group:"furniture",kind:"made",desc:"نماذج طاولات CNC — الأبعاد والثمن بعد الاتفاق",filter:"furniture"},
- {repo:"Salone-cnc",title:"ديكور الصالونات",id:"salon-designs",group:"furniture",kind:"made",desc:"نماذج ديكور الصالونات — التفاصيل حسب الطلب",filter:"furniture"},
- {repo:"dealaliexpress",file:"ayoub/Cach-Ridoux-Maroc.csv",title:"كاش ريدو وديكور النوافذ",id:"rideaux",group:"panel",kind:"made",desc:"نماذج كاش ريدو وديكور النوافذ — التفاصيل حسب الطلب",filter:"panel"},
- {repo:"panel-cnc-maroc",title:"Panneaux décoratifs",id:"panneaux",group:"panel",kind:"made",desc:"نماذج ألواح وclaustras CNC — التصنيع حسب الطلب",filter:"panel"},
- {repo:"dealaliexpress",file:"ayoub/products.csv",title:"كتالوج إضافي",id:"autres",group:"other",kind:"affiliate",desc:"منتجات من الكتالوج الإضافي",filter:"other"},
- {repo:"dealaliexpress",file:"ayoub/Phone-Case-Collection.csv",title:"Coques & accessoires téléphone",id:"telephones",group:"phones",kind:"affiliate",desc:"Produits du catalogue coques et accessoires",filter:"other"},
- {repo:"dealaliexpress",file:"ayoub/Small-Office-PC.csv",title:"Informatique & PC",id:"informatique",group:"computers",kind:"affiliate",desc:"Produits du catalogue informatique",filter:"other"},
- {repo:"Phone-Case-Collection",title:"Coques & accessoires téléphone",id:"telephones",group:"phones",kind:"affiliate",desc:"Produits du catalogue coques et accessoires",filter:"other"},
- {repo:"Small-Office-PC",title:"Informatique & PC",id:"informatique",group:"computers",kind:"affiliate",desc:"Produits du catalogue informatique",filter:"other"},
- {repo:"Motorcyclecnc",title:"Produits Motorcycle CNC",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Produits du catalogue Motorcycle CNC",filter:"other"},
- {repo:"-",title:"Autres modèles CNC",id:"autres",group:"other",kind:"affiliate",desc:"Produits issus du catalogue complémentaire",filter:"other"},
- {repo:"taksima",title:"Taksima — outils & pièces",id:"outils",group:"tool",kind:"affiliate",desc:"Outils et pièces pour atelier CNC",filter:"tool"},
- {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Machines et pièces CNC",filter:"tool",filterTools:true},
- {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Outils et accessoires CNC",filter:"tool",filterTools:true},
- {repo:"dealzone",file:"Deals & Offers.csv",title:"Offres & promotions",id:"offres",group:"offers",kind:"affiliate",desc:"Offres et promotions du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Jewelry.csv",title:"Bijoux & accessoires",id:"bijoux",group:"jewelry",kind:"affiliate",desc:"Bijoux et accessoires du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Motorcycle Accessories.csv",title:"Accessoires moto",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Accessoires moto du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Motorcycles.csv",title:"Moto & équipements",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Produits moto du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Watches.csv",title:"Montres & accessoires",id:"montres",group:"watches",kind:"affiliate",desc:"Montres et accessoires du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"computer§Office.csv",title:"Informatique & bureau",id:"informatique",group:"computers",kind:"affiliate",desc:"Informatique et accessoires de bureau",filter:"other"},
- {repo:"dealzone",file:"ملابس رجالية.csv",title:"ملابس رجالية",id:"vetements-hommes",group:"apparelMen",kind:"affiliate",desc:"منتجات الملابس الرجالية",filter:"other"},
- {repo:"dealzone",file:"ملابس نسائية.csv",title:"ملابس نسائية",id:"vetements-femmes",group:"apparelWomen",kind:"affiliate",desc:"منتجات الملابس النسائية",filter:"other"}
+ {repo:"dealaliexpress",file:"ayoub/clock-cnc.csv",title:"Horloges CNC",id:"clock-cnc",group:"clock",kind:"made",desc:"Modèles d’horloges CNC décoratives — dimensions et fabrication à confirmer",filter:"clock"},
+ {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Routeurs CNC & machines",id:"routeurs-cnc",group:"tool",kind:"affiliate",desc:"Routeurs CNC, machines et équipements pour atelier",filter:"tool",filterTools:true}
 ];
 const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split("/").map(part => encodeURIComponent(part)).join("/");
 function parseCSV(text){
