@@ -51,8 +51,20 @@ function normalize(row,src){
   if(driveId && /drive\.google\.com/.test(image)) image="https://drive.google.com/thumbnail?id="+driveId+"&sz=w1000";
  }
  const link=pick(row,["Promotion Url","Product Url","Product URL","Affiliate Link","Link","URL"]);
- const description=pick(row,["Description","Product Description","Short Description","Meta Description","description","product_description"])||src.desc;
+ const description=pick(row,["Description","Product Description","Short Description","Meta Description","description","product_description"])||makeDescription(title,src);
  return {title,image,link,src,desc:description,kind:src.kind,group:src.group};
+}
+function makeDescription(title,src){
+ const t=String(title||"Modèle CNC").trim();
+ const templates={
+  door:"Découvrez ce modèle de porte CNC (« "+t+" »), une inspiration pour une entrée élégante et une décoration personnalisée. Dimensions, matériau, finition et faisabilité à confirmer avant fabrication.",
+  panel:"Découvrez ce panneau décoratif CNC (« "+t+" »), idéal comme inspiration pour habiller un mur, une séparation ou un intérieur. Dimensions, matériau et faisabilité à confirmer avant fabrication.",
+  furniture:"Découvrez ce modèle de mobilier CNC (« "+t+" »), une idée pour aménager votre salon ou votre intérieur. Dimensions, matériau, finition et prix à confirmer avant fabrication.",
+  ornament:"Découvrez cet ornement CNC (« "+t+" »), une inspiration décorative pour vos projets de menuiserie et d’aménagement. Format, matériau et faisabilité à confirmer avant fabrication.",
+  tool:"Découvrez "+t+", un produit destiné à l’atelier ou aux projets CNC. Consultez la fiche du vendeur pour vérifier les caractéristiques, la compatibilité, le prix et la disponibilité.",
+  other:"Découvrez "+t+". Consultez la fiche du produit pour vérifier sa description, ses caractéristiques, son prix et sa disponibilité."
+ };
+ return templates[src.group]||templates.other;
 }
 function makeHashtags(p){
  const category={door:["#CNCDoor","#MoroccanDoors"],panel:["#CNCPanels","#DecorativePanels"],furniture:["#CNCFurniture","#MoroccanDecor"],ornament:["#CNCDecor","#CNCOrnaments"],tool:["#CNCTools","#CNCRouter"],other:["#CNCMaroc"]};
