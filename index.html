@@ -205,9 +205,14 @@ async function load(){
  if(status)status.textContent="Chargement de "+SOURCES.length+" catalogues…";
  const results=await Promise.all(SOURCES.map(async src=>{
   try{
-   const res=await fetch(rawUrl(src),{cache:"no-store"});
-   if(!res.ok)throw Error("HTTP "+res.status);
-   let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title);
+   let csvText="",lastError="";
+   const urls=[rawUrl(src),"https://cdn.jsdelivr.net/gh/zbatayoub09-source/"+src.repo+"@main/"+(src.file||"products.csv").split("/").map(part=>encodeURIComponent(part)).join("/")];
+   for(const url of urls){
+    try{const res=await fetch(url,{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);csvText=await res.text();if(!csvText.trim())throw Error("CSV vide");break;}
+    catch(err){lastError=String(err);}
+   }
+   if(!csvText)throw Error(lastError||"CSV inaccessible");
+   let rows=parseCSV(csvText).map(r=>normalize(r,src)).filter(p=>p.title);
    if(src.filterTools)rows=rows.filter(p=>p.link&&relevantTool(p));
    return {src,rows,ok:true};
   }catch(e){console.warn("Source non chargée:",src.repo,src.file||"products.csv",e);return {src,rows:[],ok:false,error:String(e)}}
