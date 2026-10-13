@@ -12,6 +12,10 @@
 </main><footer><div class="wrap">Les prix, dimensions, matériaux et délais des créations sur mesure sont confirmés avant commande. Les équipements sont vendus par des vendeurs externes.</div></footer>
 <script>
 const SOURCES = [
+ {repo:"dealaliexpress",file:"ayoub/CNC-Moroccan-Door-Library.csv",title:"بيبان مغربية CNC",id:"portes",group:"door",kind:"made",desc:"نماذج أبواب مغربية CNC — التصنيع حسب الطلب بعد الاتفاق",filter:"door"},
+ {repo:"dealaliexpress",file:"ayoub/creative-Qoran.csv",title:"زواقات قرآنية وخط عربي",id:"qoran",group:"ornament",kind:"made",desc:"زواقات وخط عربي للديكور CNC — التفاصيل حسب الطلب",filter:"ornament"},
+ {repo:"dealaliexpress",file:"ayoub/salone-cnc.csv",title:"ديكور صالونات CNC",id:"salon-designs",group:"furniture",kind:"made",desc:"نماذج ديكور الصالونات — الأبعاد والتصنيع حسب الطلب",filter:"furniture"},
+ {repo:"dealaliexpress",file:"ayoub/Clouck-Cnc.csv",title:"ساعات وحليات CNC",id:"clock-cnc",group:"ornament",kind:"made",desc:"نماذج ساعات CNC للديكور — التصنيع حسب الطلب بعد الاتفاق",filter:"ornament"},
  {repo:"porte-cnc",title:"Portes CNC",id:"portes",group:"door",kind:"made",desc:"Modèle de référence — fabrication uniquement après confirmation du devis",filter:"door"},
  {repo:"CNC-Moroccan-Door-Library",title:"Portes marocaines",id:"portes",group:"door",kind:"made",desc:"Modèle de référence — dimensions et prix à confirmer",filter:"door"},
  {repo:"panel-cnc-maroc",title:"Panneaux décoratifs",id:"panneaux",group:"panel",kind:"made",desc:"Modèle de référence — réalisation sur commande",filter:"panel"},
@@ -79,7 +83,8 @@ const params=new URLSearchParams(location.search),wantedSrc=params.get("src")||"
 async function init(){
  const content=document.getElementById("content");
  if(!wantedSrc||!wantedTitle){content.innerHTML='<div class="notice">Lien du produit incomplet. <a href="index.html"><u>Retour au catalogue</u></a>.</div>';return}
- const src=SOURCES.find(s=>s.repo===wantedSrc);
+ const wantedFile=params.get("file")||"";
+ const src=SOURCES.find(s=>s.repo===wantedSrc&&(s.file||"")===wantedFile);
  if(!src){content.innerHTML='<div class="notice">Catalogue introuvable. <a href="index.html"><u>Retour au catalogue</u></a>.</div>';return}
  try{
   const response=await fetch(rawUrl(src),{cache:"no-store"});if(!response.ok)throw Error("CSV indisponible");
