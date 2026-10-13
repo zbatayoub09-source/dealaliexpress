@@ -45,7 +45,7 @@ const SOURCES = [
  {repo:"dealzone",file:"ملابس رجالية.csv",title:"ملابس رجالية",id:"autres",group:"other",kind:"affiliate",desc:"منتجات الملابس الرجالية",filter:"other"},
  {repo:"dealzone",file:"ملابس نسائية.csv",title:"ملابس نسائية",id:"autres",group:"other",kind:"affiliate",desc:"منتجات الملابس النسائية",filter:"other"}
 ];
-const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split(" ").map(encodeURIComponent).join("%20");
+const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split("/").map(part => encodeURIComponent(part)).join("/");
 function parseCSV(text){
  const first=(text.split(/\r?\n/,1)[0]||""); const delim=first.includes("\t")?"\t":",";
  const rows=[];let row=[],field="",quoted=false;
