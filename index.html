@@ -95,6 +95,10 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 <footer><div class="wrap foot"><div><strong>CNC FORGE MAROC</strong><p>Catalogue spécialisé en routeurs CNC, machines d’atelier et horloges décoratives CNC. Les dimensions, matériaux, prix et disponibilités sont à confirmer avant commande.</p></div><div><strong>Informations</strong><p>Les produits d'équipement renvoient vers des vendeurs externes. Certains liens peuvent être des liens de recommandation. <br><a href="category.html?cat=clock">Voir les modèles</a> · <a href="category.html?cat=tool">Voir les routeurs CNC</a></p></div></div></footer>
 <script>
 const SOURCES = [
+ {repo:"dealaliexpress",file:"ayoub/CNC-Moroccan-Door-Library.csv",title:"Portes marocaines CNC",id:"portes-cnc",group:"doors",kind:"made",desc:"Collection de modèles de portes marocaines pour CNC",filter:"doors"},
+ {repo:"dealaliexpress",file:"ayoub/Cach-Ridoux-Maroc.csv",title:"Cache-rideaux CNC",id:"rideaux-cnc",group:"curtains",kind:"made",desc:"Modèles de cache-rideaux et décoration CNC",filter:"curtains"},
+ {repo:"dealaliexpress",file:"ayoub/creative-Qoran.csv",title:"Décoration coranique CNC",id:"quran-cnc",group:"quran",kind:"made",desc:"Modèles décoratifs coraniques pour projets CNC",filter:"quran"},
+ {repo:"dealaliexpress",file:"ayoub/salone-cnc.csv",title:"Décoration salon CNC",id:"salon-cnc",group:"salon",kind:"made",desc:"Modèles de décoration et mobilier de salon CNC",filter:"salon"},
  {repo:"dealaliexpress",file:"ayoub/clock-cnc.csv",title:"Horloges CNC",id:"clock-cnc",group:"clock",kind:"made",desc:"Modèles d’horloges CNC décoratives — dimensions et fabrication à confirmer",filter:"clock"},
  {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Routeurs CNC & machines",id:"routeurs-cnc",group:"tool",kind:"affiliate",desc:"Routeurs CNC, machines et équipements pour atelier",filter:"tool",filterTools:true}
 ];
@@ -151,6 +155,10 @@ function relevantTool(p){
 }
 let products=[],activeFilter="all",query="";
 const groupInfo={
+ doors:{id:"portes-cnc",title:"Portes marocaines CNC",kicker:"Portes & bibane",intro:"Modèles de portes marocaines et motifs de menuiserie CNC pour vos projets sur mesure."},
+ curtains:{id:"rideaux-cnc",title:"Cache-rideaux CNC",kicker:"Décoration intérieure",intro:"Modèles de cache-rideaux et éléments décoratifs à adapter aux dimensions de votre projet."},
+ quran:{id:"quran-cnc",title:"Décoration coranique CNC",kicker:"Calligraphie & décoration",intro:"Modèles décoratifs coraniques pour projets CNC. Vérifiez le fichier et les dimensions avant fabrication."},
+ salon:{id:"salon-cnc",title:"Décoration salon CNC",kicker:"Salon & mobilier",intro:"Inspirations de décoration et de mobilier de salon réalisables en CNC, selon le modèle."},
  clock:{id:"clock-cnc",title:"Horloges CNC",kicker:"Collection horloges",intro:"Modèles d’horloges décoratives CNC. Choisissez un modèle pour demander les dimensions et les détails de fabrication."},
  tool:{id:"routeurs-cnc",title:"Routeurs CNC & machines",kicker:"Équipement atelier",intro:"Routeurs CNC et machines pour votre atelier. Vérifiez les caractéristiques et la disponibilité auprès du vendeur."}
 };
@@ -188,7 +196,7 @@ function filtered(){
 }
 function render(){
  const host=document.getElementById("sections"),list=filtered();host.innerHTML="";
- const order=["clock","tool"];
+ const order=["doors","curtains","quran","salon","clock","tool"];
  let shown=0;
  order.forEach((g,idx)=>{
   const group=list.filter(p=>p.group===g);if(!group.length)return;shown+=group.length;
