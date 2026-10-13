@@ -221,7 +221,7 @@ function render(){
 async function load(){
  const note=document.createElement("div");note.className="empty";note.textContent="Chargement des modèles et des outils…";document.getElementById("sections").appendChild(note);
  const results=await Promise.all(SOURCES.map(async src=>{
-  try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title&&p.image);if(src.repo==="dealzone")rows=rows.filter(p=>p.link&&relevantTool(p));return rows}
+  try{const res=await fetch(rawUrl(src),{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);let rows=parseCSV(await res.text()).map(r=>normalize(r,src)).filter(p=>p.title);if(src.repo==="dealzone")rows=rows.filter(p=>p.link&&relevantTool(p));return rows}
   catch(e){console.warn("Source non chargée:",src.repo,e);return []}
  }));
  const seen=new Set();products=results.flat().filter(p=>{const key=(low(p.title)+"|"+low(p.image)).trim();if(seen.has(key))return false;seen.add(key);return true;});
