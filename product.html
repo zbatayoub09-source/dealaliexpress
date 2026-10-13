@@ -68,8 +68,11 @@ async function init(){
  const src=SOURCES.find(s=>s.repo===wantedSrc&&(s.file||"")===wantedFile);
  if(!src){content.innerHTML='<div class="notice">Catalogue introuvable. <a href="index.html"><u>Retour au catalogue</u></a>.</div>';return}
  try{
-  const response=await fetch(rawUrl(src),{cache:"no-store"});if(!response.ok)throw Error("CSV indisponible");
-  const rows=parseCSV(await response.text());
+  let csvText="",lastError="";
+  const urls=[rawUrl(src),"https://cdn.jsdelivr.net/gh/zbatayoub09-source/"+src.repo+"@main/"+(src.file||"products.csv").split("/").map(part=>encodeURIComponent(part)).join("/")];
+  for(const url of urls){try{const response=await fetch(url,{cache:"no-store"});if(!response.ok)throw Error("HTTP "+response.status);csvText=await response.text();if(!csvText.trim())throw Error("CSV vide");break}catch(err){lastError=String(err)}}
+  if(!csvText)throw Error(lastError||"CSV indisponible");
+  const rows=parseCSV(csvText);
   let row=rows.find(r=>pick(r,["Title","SEO Title","Product Desc","Product Title","Name","title","name"])===wantedTitle);
   if(!row)throw Error("Produit introuvable dans le CSV");
   const p=normalize(row,src);
