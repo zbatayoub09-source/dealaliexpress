@@ -59,7 +59,7 @@ footer{background:#0b1220;color:#d7deea;padding:30px 0;margin-top:42px}.foot{dis
 </div>
 <div class="trust"><div><span class="ico">📐</span><span><strong>Sur mesure</strong><small>Dimensions à confirmer avant fabrication</small></span></div><div><span class="ico">🪵</span><span><strong>Fabriqué à la commande</strong><small>Pas de stock annoncé à tort</small></span></div><div><span class="ico">⚙️</span><span><strong>Équipement CNC</strong><small>Liens de produits pour votre atelier</small></span></div></div>
 </section>
-<div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><a class="chip" href="category.html?cat=door">Portes ↗</a><a class="chip" href="category.html?cat=panel">Panneaux ↗</a><a class="chip" href="category.html?cat=furniture">Tables & salon ↗</a><a class="chip" href="category.html?cat=ornament">Ornements ↗</a><a class="chip" href="category.html?cat=tool">Outils CNC ↗</a></div>
+<div class="chips" id="chips"><button class="chip active" data-filter="all">Tout afficher</button><button class="chip" data-filter="made">Décoration sur commande</button><a class="chip" href="category.html?cat=door">Portes ↗</a><a class="chip" href="category.html?cat=panel">Panneaux ↗</a><a class="chip" href="category.html?cat=furniture">Tables & salon ↗</a><a class="chip" href="category.html?cat=ornament">Ornements ↗</a><a class="chip" href="category.html?cat=tool">Outils CNC ↗</a><a class="chip" href="category.html?cat=phones">Téléphones ↗</a><a class="chip" href="category.html?cat=computers">Informatique ↗</a><a class="chip" href="category.html?cat=apparelMen">Mode homme ↗</a><a class="chip" href="category.html?cat=apparelWomen">Mode femme ↗</a><a class="chip" href="category.html?cat=jewelry">Bijoux ↗</a><a class="chip" href="category.html?cat=watches">Montres ↗</a><a class="chip" href="category.html?cat=motorcycle">Moto ↗</a><a class="chip" href="category.html?cat=offers">Offres ↗</a></div>
 <div id="sections"></div>
 <div class="banner"><div><h3>Un modèle vous intéresse ?</h3><p>Envoyez le modèle choisi et les dimensions souhaitées. Le prix et le délai sont confirmés avant de lancer la fabrication.</p></div><a class="btn" href="https://wa.me/212622765085?text=Bonjour%2C%20je%20souhaite%20un%20renseignement%20sur%20une%20commande%20CNC." target="_blank" rel="noopener">Contacter sur WhatsApp ↗</a></div>
 
@@ -109,23 +109,23 @@ const SOURCES = [
  {repo:"dealaliexpress",file:"ayoub/Cach-Ridoux-Maroc.csv",title:"كاش ريدو وديكور النوافذ",id:"rideaux",group:"panel",kind:"made",desc:"نماذج كاش ريدو وديكور النوافذ — التفاصيل حسب الطلب",filter:"panel"},
  {repo:"panel-cnc-maroc",title:"Panneaux décoratifs",id:"panneaux",group:"panel",kind:"made",desc:"نماذج ألواح وclaustras CNC — التصنيع حسب الطلب",filter:"panel"},
  {repo:"dealaliexpress",file:"ayoub/products.csv",title:"كتالوج إضافي",id:"autres",group:"other",kind:"affiliate",desc:"منتجات من الكتالوج الإضافي",filter:"other"},
- {repo:"dealaliexpress",file:"ayoub/Phone-Case-Collection.csv",title:"Coques & accessoires téléphone",id:"autres",group:"other",kind:"affiliate",desc:"Produits du catalogue coques et accessoires",filter:"other"},
- {repo:"dealaliexpress",file:"ayoub/Small-Office-PC.csv",title:"Informatique & PC",id:"autres",group:"other",kind:"affiliate",desc:"Produits du catalogue informatique",filter:"other"},
- {repo:"Phone-Case-Collection",title:"Coques & accessoires téléphone",id:"autres",group:"other",kind:"affiliate",desc:"Produits du catalogue coques et accessoires",filter:"other"},
- {repo:"Small-Office-PC",title:"Informatique & PC",id:"autres",group:"other",kind:"affiliate",desc:"Produits du catalogue informatique",filter:"other"},
- {repo:"Motorcyclecnc",title:"Produits Motorcycle CNC",id:"autres",group:"other",kind:"affiliate",desc:"Produits du catalogue Motorcycle CNC",filter:"other"},
+ {repo:"dealaliexpress",file:"ayoub/Phone-Case-Collection.csv",title:"Coques & accessoires téléphone",id:"telephones",group:"phones",kind:"affiliate",desc:"Produits du catalogue coques et accessoires",filter:"other"},
+ {repo:"dealaliexpress",file:"ayoub/Small-Office-PC.csv",title:"Informatique & PC",id:"informatique",group:"computers",kind:"affiliate",desc:"Produits du catalogue informatique",filter:"other"},
+ {repo:"Phone-Case-Collection",title:"Coques & accessoires téléphone",id:"telephones",group:"phones",kind:"affiliate",desc:"Produits du catalogue coques et accessoires",filter:"other"},
+ {repo:"Small-Office-PC",title:"Informatique & PC",id:"informatique",group:"computers",kind:"affiliate",desc:"Produits du catalogue informatique",filter:"other"},
+ {repo:"Motorcyclecnc",title:"Produits Motorcycle CNC",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Produits du catalogue Motorcycle CNC",filter:"other"},
  {repo:"-",title:"Autres modèles CNC",id:"autres",group:"other",kind:"affiliate",desc:"Produits issus du catalogue complémentaire",filter:"other"},
  {repo:"taksima",title:"Taksima — outils & pièces",id:"outils",group:"tool",kind:"affiliate",desc:"Outils et pièces pour atelier CNC",filter:"tool"},
  {repo:"dealzone",file:"CNC Routers & Machinery.csv",title:"Machines & pièces CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Machines et pièces CNC",filter:"tool",filterTools:true},
  {repo:"dealzone",file:"Tools & Hardware.csv",title:"Outils & accessoires CNC",id:"outils",group:"tool",kind:"affiliate",desc:"Outils et accessoires CNC",filter:"tool",filterTools:true},
- {repo:"dealzone",file:"Deals & Offers.csv",title:"Offres & promotions",id:"autres",group:"other",kind:"affiliate",desc:"Offres et promotions du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Jewelry.csv",title:"Bijoux & accessoires",id:"autres",group:"other",kind:"affiliate",desc:"Bijoux et accessoires du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Motorcycle Accessories.csv",title:"Accessoires moto",id:"autres",group:"other",kind:"affiliate",desc:"Accessoires moto du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Motorcycles.csv",title:"Moto & équipements",id:"autres",group:"other",kind:"affiliate",desc:"Produits moto du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"Watches.csv",title:"Montres & accessoires",id:"autres",group:"other",kind:"affiliate",desc:"Montres et accessoires du catalogue DealZone",filter:"other"},
- {repo:"dealzone",file:"computer§Office.csv",title:"Informatique & bureau",id:"autres",group:"other",kind:"affiliate",desc:"Informatique et accessoires de bureau",filter:"other"},
- {repo:"dealzone",file:"ملابس رجالية.csv",title:"ملابس رجالية",id:"autres",group:"other",kind:"affiliate",desc:"منتجات الملابس الرجالية",filter:"other"},
- {repo:"dealzone",file:"ملابس نسائية.csv",title:"ملابس نسائية",id:"autres",group:"other",kind:"affiliate",desc:"منتجات الملابس النسائية",filter:"other"}
+ {repo:"dealzone",file:"Deals & Offers.csv",title:"Offres & promotions",id:"offres",group:"offers",kind:"affiliate",desc:"Offres et promotions du catalogue DealZone",filter:"other"},
+ {repo:"dealzone",file:"Jewelry.csv",title:"Bijoux & accessoires",id:"bijoux",group:"jewelry",kind:"affiliate",desc:"Bijoux et accessoires du catalogue DealZone",filter:"other"},
+ {repo:"dealzone",file:"Motorcycle Accessories.csv",title:"Accessoires moto",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Accessoires moto du catalogue DealZone",filter:"other"},
+ {repo:"dealzone",file:"Motorcycles.csv",title:"Moto & équipements",id:"moto",group:"motorcycle",kind:"affiliate",desc:"Produits moto du catalogue DealZone",filter:"other"},
+ {repo:"dealzone",file:"Watches.csv",title:"Montres & accessoires",id:"montres",group:"watches",kind:"affiliate",desc:"Montres et accessoires du catalogue DealZone",filter:"other"},
+ {repo:"dealzone",file:"computer§Office.csv",title:"Informatique & bureau",id:"informatique",group:"computers",kind:"affiliate",desc:"Informatique et accessoires de bureau",filter:"other"},
+ {repo:"dealzone",file:"ملابس رجالية.csv",title:"ملابس رجالية",id:"vetements-hommes",group:"apparelMen",kind:"affiliate",desc:"منتجات الملابس الرجالية",filter:"other"},
+ {repo:"dealzone",file:"ملابس نسائية.csv",title:"ملابس نسائية",id:"vetements-femmes",group:"apparelWomen",kind:"affiliate",desc:"منتجات الملابس النسائية",filter:"other"}
 ];
 const rawUrl = s => "https://raw.githubusercontent.com/zbatayoub09-source/" + s.repo + "/main/" + (s.file || "products.csv").split("/").map(part => encodeURIComponent(part)).join("/");
 function parseCSV(text){
@@ -173,7 +173,15 @@ const groupInfo={
  furniture:{id:"salon",title:"Tables & salon",kicker:"Mobilier CNC",intro:"Inspirez-vous des modèles et demandez une réalisation adaptée à votre espace."},
  ornament:{id:"decoration",title:"Ornements & décoration",kicker:"Décoration",intro:"Motifs décoratifs et calligraphies disponibles comme références de projet."},
  tool:{id:"outils",title:"Machines, outils & accessoires CNC",kicker:"Équipement atelier",intro:"Produits et accessoires provenant des CSV de CNC et de DealZone."},
- other:{id:"autres",title:"Autres catalogues",kicker:"Autres produits",intro:"Produits chargés depuis les autres dépôts GitHub listés. Ouvrez la fiche pour vérifier les informations et le vendeur."}
+ other:{id:"autres",title:"Autres catalogues",kicker:"Autres produits",intro:"Produits des catalogues complémentaires, avec les informations du vendeur à vérifier."},
+ phones:{id:"telephones",title:"Téléphones & accessoires",kicker:"Accessoires mobiles",intro:"Coques, supports et accessoires pour téléphone."},
+ computers:{id:"informatique",title:"Informatique & bureau",kicker:"Équipement numérique",intro:"Ordinateurs, accessoires et équipement de bureau."},
+ apparelMen:{id:"vetements-hommes",title:"Mode homme",kicker:"Collection homme",intro:"Sélection de vêtements et accessoires pour homme."},
+ apparelWomen:{id:"vetements-femmes",title:"Mode femme",kicker:"Collection femme",intro:"Sélection de vêtements et accessoires pour femme."},
+ jewelry:{id:"bijoux",title:"Bijoux & accessoires",kicker:"Style & accessoires",intro:"Bijoux et accessoires issus du catalogue produits."},
+ watches:{id:"montres",title:"Montres",kicker:"Montres & style",intro:"Sélection de montres et accessoires."},
+ motorcycle:{id:"moto",title:"Moto & accessoires",kicker:"Univers moto",intro:"Accessoires et produits liés à la moto."},
+ offers:{id:"offres",title:"Offres & promotions",kicker:"Bonnes affaires",intro:"Produits promotionnels issus du catalogue DealZone."}
 };
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function money(s){if(!s)return "";return s.replace(/^([A-Z]{3})\s*/,"$1 ").trim()}
@@ -209,7 +217,7 @@ function filtered(){
 }
 function render(){
  const host=document.getElementById("sections"),list=filtered();host.innerHTML="";
- const order=categoryPage?([categoryPage]):["door","panel","furniture","ornament","tool","other"];
+ const order=categoryPage?([categoryPage]):["door","panel","furniture","ornament","tool","phones","computers","apparelMen","apparelWomen","jewelry","watches","motorcycle","offers","other"];
  let shown=0;
  order.forEach((g,idx)=>{
   const group=list.filter(p=>p.group===g);if(!group.length)return;shown+=group.length;
