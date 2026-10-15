@@ -148,6 +148,9 @@ const groupInfo={
  quran:{id:"quran-cnc",title:"Décoration coranique CNC",kicker:"Calligraphie & décoration",intro:"Modèles décoratifs coraniques pour projets CNC. Vérifiez le fichier et les dimensions avant fabrication."},
  salon:{id:"salon-cnc",title:"Décoration salon CNC",kicker:"Salon & mobilier",intro:"Inspirations de décoration et de mobilier de salon réalisables en CNC, selon le modèle."},
  clock:{id:"clock-cnc",title:"Horloges CNC",kicker:"Collection horloges",intro:"Modèles d’horloges décoratives CNC. Choisissez un modèle pour demander les dimensions et les détails de fabrication."},
+ panel:{id:"panneaux-cnc",title:"Panneaux décoratifs CNC",kicker:"Panneaux & motifs",intro:"Collection de panneaux décoratifs et motifs CNC à adapter à votre projet."},
+ ornament:{id:"ornements-cnc",title:"Ornements & décoration CNC",kicker:"Décoration CNC",intro:"Modèles décoratifs et fichiers de création pour vos projets CNC."},
+ other:{id:"autres-modeles-cnc",title:"Autres modèles CNC",kicker:"Autres fichiers",intro:"Autres fichiers CSV détectés automatiquement dans le dossier Ayoub."},
  tool:{id:"routeurs-cnc",title:"Routeurs CNC & machines",kicker:"Équipement atelier",intro:"Routeurs CNC et machines pour votre atelier. Vérifiez les caractéristiques et la disponibilité auprès du vendeur."}
 };
 function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
@@ -184,7 +187,7 @@ function filtered(){
 }
 function render(){
  const host=document.getElementById("sections"),list=filtered();host.innerHTML="";
- const order=categoryPage?([categoryPage]):["doors","curtains","quran","salon","clock","tool"];
+ const order=categoryPage?([categoryPage]):["doors","curtains","quran","salon","clock","panel","ornament","other","tool"];
  let shown=0;
  order.forEach((g,idx)=>{
   const group=list.filter(p=>p.group===g);if(!group.length)return;shown+=group.length;
@@ -196,7 +199,33 @@ function render(){
  });
  if(!shown)host.innerHTML='<div class="empty">Aucun résultat. Essayez un autre mot-clé ou choisissez « Tout afficher ».</div>';
 }
+async function discoverAyoubCsvs(){
+ try{
+  const response=await fetch("https://api.github.com/repos/zbatayoub09-source/dealaliexpress/contents/ayoub?ref=main",{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});
+  if(!response.ok)throw Error("GitHub API HTTP "+response.status);
+  const entries=await response.json();
+  const known=new Set(SOURCES.filter(s=>s.repo==="dealaliexpress"&&s.file).map(s=>s.file.toLowerCase()));
+  entries.filter(f=>f.type==="file"&&/\\.csv$/i.test(f.name)).forEach(f=>{
+   const path="ayoub/"+f.name;
+   if(known.has(path.toLowerCase()))return;
+   const base=f.name.replace(/\\.csv$/i,"");
+   const n=base.toLowerCase();
+   let group="other",title=base.replace(/[-_]+/g," ").replace(/\\b\\w/g,c=>c.toUpperCase());
+   if(/panel/.test(n))group="panel";
+   else if(/decor|ornament/.test(n))group="ornament";
+   else if(/firaqat|router|machine|tool/.test(n))group="tool";
+   else if(/door|porte/.test(n))group="doors";
+   else if(/cach|rideau/.test(n))group="curtains";
+   else if(/qoran|quran/.test(n))group="quran";
+   else if(/salon|salone/.test(n))group="salon";
+   else if(/clock|horloge/.test(n))group="clock";
+   SOURCES.push({repo:"dealaliexpress",file:path,title:title,id:"csv-"+n.replace(/[^a-z0-9]+/g,"-"),group,kind:"made",desc:"Modèles CNC chargés automatiquement depuis "+base,filter:group});
+   known.add(path.toLowerCase());
+  });
+ }catch(e){console.warn("Impossible de découvrir les nouveaux CSV du dossier ayoub:",e)}
+}
 async function load(){
+ await discoverAyoubCsvs();
  const status=document.getElementById("catalog-status");
  if(status)status.textContent="Chargement de "+SOURCES.length+" catalogues…";
  const results=await Promise.all(SOURCES.map(async src=>{
