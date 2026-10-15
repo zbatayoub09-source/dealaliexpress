@@ -71,8 +71,8 @@ async function init(){
  const wantedFile=params.get("file")||"";
  let src=SOURCES.find(s=>s.repo===wantedSrc&&(s.file||"")===wantedFile);
  // Accept every new CSV added to the CNC Forge ayoub/ folder, not only files listed above.
- if(!src && wantedSrc==="dealaliexpress" && /^ayoub\\/.+\\.csv$/i.test(wantedFile)){
-  const base=wantedFile.split("/").pop().replace(/\\.csv$/i,"");
+ if(!src && wantedSrc==="dealaliexpress" && /^ayoub\/.+\.csv$/i.test(wantedFile)){
+  const base=wantedFile.split("/").pop().replace(/\.csv$/i,"");
   const n=base.toLowerCase().replace(/[-_]+/g," ");
   let group="other",kind="made";
   if(/door|porte/.test(n))group="door";
@@ -80,7 +80,7 @@ async function init(){
   else if(/furniture|meuble|table|salon/.test(n))group="furniture";
   else if(/ornament|ornement|decor|décor|qoran|coran|rideau|clock|horloge/.test(n))group="ornament";
   else if(/tool|router|machine|accessoir/.test(n)){group="tool";kind="affiliate"}
-  src={repo:"dealaliexpress",file:wantedFile,title:base.replace(/[-_]+/g," ").replace(/\\b\\w/g,c=>c.toUpperCase()),id:base.toLowerCase().replace(/[^a-z0-9]+/g,"-"),group,kind,desc:"Catalogue CNC Forge Maroc",filter:group};
+  src={repo:"dealaliexpress",file:wantedFile,title:base.replace(/[-_]+/g," ").replace(/\b\w/g,c=>c.toUpperCase()),id:base.toLowerCase().replace(/[^a-z0-9]+/g,"-"),group,kind,desc:"Catalogue CNC Forge Maroc",filter:group};
  }
  if(!src){content.innerHTML='<div class="notice">Catalogue introuvable. Vérifiez que le CSV se trouve dans le dossier ayoub/ du dépôt dealaliexpress. <a href="index.html"><u>Retour au catalogue</u></a>.</div>';return}
  try{
