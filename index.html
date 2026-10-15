@@ -170,15 +170,23 @@ function money(s){if(!s)return "";return s.replace(/^([A-Z]{3})\s*/,"$1 ").trim(
 function imageFallback(img){
  const current=img.getAttribute("src")||"";
  const id=(current.match(/[?&]id=([^&]+)/)||[])[1];
- if(id && /drive\.google\.com/.test(current) && !img.dataset.driveFallback){
-  img.dataset.driveFallback="1";
-  img.src="https://drive.google.com/uc?export=view&id="+id;
-  return;
+ if(id && /drive\.google\.com/.test(current)){
+  const tries=[
+   "https://drive.google.com/uc?export=view&id="+id,
+   "https://drive.google.com/uc?export=download&id="+id,
+   "https://lh3.googleusercontent.com/d/"+id
+  ];
+  const next=Number(img.dataset.driveFallback||0);
+  if(next<tries.length){
+   img.dataset.driveFallback=String(next+1);
+   img.src=tries[next];
+   return;
+  }
  }
  img.onerror=null;
  img.style.display="none";
  const note=document.createElement("span");
- note.textContent="Photo indisponible";
+ note.textContent="Photo indisponible — vérifier le partage Google Drive";
  note.style.cssText="padding:12px;text-align:center;color:#687386;font-size:12px";
  img.parentElement.appendChild(note);
 }
