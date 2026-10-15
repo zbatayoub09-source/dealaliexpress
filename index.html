@@ -217,12 +217,12 @@ async function discoverAyoubCsvs(){
   if(!response.ok)throw Error("GitHub API HTTP "+response.status);
   const entries=await response.json();
   const known=new Set(SOURCES.filter(s=>s.repo==="dealaliexpress"&&s.file).map(s=>s.file.toLowerCase()));
-  entries.filter(f=>f.type==="file"&&/\\.csv$/i.test(f.name)).forEach(f=>{
+  entries.filter(f=>f.type==="file"&&/\.csv$/i.test(f.name)).forEach(f=>{
    const path="ayoub/"+f.name;
    if(known.has(path.toLowerCase()))return;
-   const base=f.name.replace(/\\.csv$/i,"");
+   const base=f.name.replace(/\.csv$/i,"");
    const n=base.toLowerCase();
-   let group="other",title=base.replace(/[-_]+/g," ").replace(/\\b\\w/g,c=>c.toUpperCase());
+   let group="other",title=base.replace(/[-_]+/g," ").replace(/\b\w/g,c=>c.toUpperCase());
    if(/panel/.test(n))group="panel";
    else if(/decor|ornament/.test(n))group="ornament";
    else if(/firaqat|router|machine|tool/.test(n))group="tool";
