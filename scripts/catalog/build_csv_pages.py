@@ -32,7 +32,26 @@ def read_csv(path):
  raw=path.read_text(encoding="utf-8-sig",errors="replace")
  try: dialect=csv.Sniffer().sniff(raw[:8192],delimiters=",;\\t|")
  except csv.Error: dialect=csv.excel
- return list(csv.DictReader(raw.splitlines(),dialect=dialect))
+ reader=csv.DictReader(raw.splitlines(),dialect=dialect)
+ return list(reader), (reader.fieldnames or []), dialect
+
+def ensure_status_column(path):
+ rows, fields, dialect = read_csv(path)
+ status_key = next((f for f in fields if norm(f) in ("status","statu","statut")), None)
+ if status_key:
+  return rows, status_key
+ status_key = "Status"
+ fields = fields + [status_key]
+ for row in rows: row[status_key] = ""
+ with path.open("w",encoding="utf-8-sig",newline="") as f:
+  writer=csv.DictWriter(f,fieldnames=fields,delimiter=getattr(dialect,"delimiter",","),lineterminator="\\n",extrasaction="ignore")
+  writer.writeheader()
+  writer.writerows(rows)
+ return rows, status_key
+
+HIDDEN_STATUSES = {"accepte","accepted","accept","refund","refunded","rembourse","remboursement"}
+def is_hidden_status(value):
+ return norm(value) in HIDDEN_STATUSES
 def page_template(title,source_name,rows):
  cards=[]
  for i,row in enumerate(rows,1):
@@ -57,11 +76,13 @@ def main():
  current=set(); links=[]
  for path in csvs:
   slug=slugify(path.stem); current.add(slug)
-  rows=[r for r in read_csv(path) if any((v or "").strip() for v in r.values())]
+  rows,status_key=ensure_status_column(path)
+  rows=[r for r in rows if any((v or "").strip() for v in r.values())]
+  visible_rows=[r for r in rows if not is_hidden_status(r.get(status_key,""))]
   title=re.sub(r"[-_]+"," ",path.stem).strip().title()
   dest=OUT/slug; dest.mkdir(parents=True,exist_ok=True)
-  (dest/"index.html").write_text(page_template(title,path.name,rows),encoding="utf-8")
-  links.append((title,slug,len(rows),path.name))
+  (dest/"index.html").write_text(page_template(title,path.name,visible_rows),encoding="utf-8")
+  links.append((title,slug,len(visible_rows),path.name))
  for child in OUT.iterdir():
   if child.is_dir() and child.name not in current: shutil.rmtree(child)
  listing="".join(f'<a class="tile" href="{slug}/"><div class="tile-icon">CNC</div><div><strong>{html.escape(title)}</strong><small>{count} products · {html.escape(filename)}</small></div><b>›</b></a>' for title,slug,count,filename in links)
