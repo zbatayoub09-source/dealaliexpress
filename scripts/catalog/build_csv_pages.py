@@ -43,7 +43,7 @@ def page_template(title, source_name, rows):
         desc=pick(row,ALIASES["description"])
         price=pick(row,ALIASES["price"])
         old=pick(row,ALIASES["old_price"])
-        image_html=f'<img src="{html.escape(image, quote=True)}" alt="{html.escape(name, quote=True)}" loading="lazy" onerror="this.parentElement.innerHTML=\\'<span class=&quot;placeholder&quot;>CNC</span>\\'">' if image else '<span class="placeholder">CNC</span>'
+        image_html=f'<img src="{html.escape(image, quote=True)}" alt="{html.escape(name, quote=True)}" loading="lazy" onerror="this.remove()">' if image else '<span class="placeholder">CNC</span>'
         action=f'<a class="cta" href="{html.escape(link, quote=True)}" target="_blank" rel="noopener noreferrer">View product / design ↗</a>' if link else '<span class="cta muted">Contact us for details</span>'
         cards.append(f'<article class="card"><div class="photo">{image_html}</div><div class="body"><h2>{html.escape(name)}</h2>{f"<p>{html.escape(desc)}</p>" if desc and norm(desc)!=norm(name) else ""}{f"<div class=price>{html.escape(price)}</div>" if price else ""}{f"<div class=old>Was {html.escape(old)}</div>" if old and norm(old)!=norm(price) else ""}{action}</div></article>')
     cards_html="".join(cards) or '<p class="empty">No products found in this CSV file.</p>'
