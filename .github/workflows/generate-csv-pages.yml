@@ -1,0 +1,36 @@
+name: Generate one page per CNC CSV
+
+on:
+  push:
+    paths:
+      - "ayoub/*.csv"
+      - "scripts/catalog/build_csv_pages.py"
+      - ".github/workflows/generate-csv-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-catalog-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Generate one page for each CSV
+        run: python scripts/catalog/build_csv_pages.py
+      - name: Commit generated pages
+        run: |
+          if [[ -n "$(git status --porcelain catalog)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add catalog
+            git commit -m "Generate individual pages for CNC CSV catalogs"
+            git push
+          else
+            echo "Catalog pages are already up to date."
+          fi
