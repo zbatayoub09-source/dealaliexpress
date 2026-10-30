@@ -25,11 +25,11 @@ jobs:
         run: python scripts/catalog/build_csv_pages.py
       - name: Commit generated pages
         run: |
-          if [[ -n "$(git status --porcelain catalog)" ]]; then
+          if [[ -n "$(git status --porcelain ayoub catalog)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add catalog
-            git commit -m "Generate individual pages for CNC CSV catalogs"
+            git add ayoub catalog
+            git commit -m "Add CSV status columns and regenerate CNC catalog pages"
             git push
           else
             echo "Catalog pages are already up to date."
