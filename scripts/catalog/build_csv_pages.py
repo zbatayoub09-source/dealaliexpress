@@ -30,7 +30,7 @@ def slugify(name):
  return s or "csv-catalog"
 def read_csv(path):
  raw=path.read_text(encoding="utf-8-sig",errors="replace")
- try: dialect=csv.Sniffer().sniff(raw[:8192],delimiters=",;\\t|")
+ try: dialect=csv.Sniffer().sniff(raw[:8192],delimiters=",;\t|")
  except csv.Error: dialect=csv.excel
  reader=csv.DictReader(raw.splitlines(),dialect=dialect)
  return list(reader), (reader.fieldnames or []), dialect
@@ -44,7 +44,7 @@ def ensure_status_column(path):
  fields = fields + [status_key]
  for row in rows: row[status_key] = ""
  with path.open("w",encoding="utf-8-sig",newline="") as f:
-  writer=csv.DictWriter(f,fieldnames=fields,delimiter=getattr(dialect,"delimiter",","),lineterminator="\\n",extrasaction="ignore")
+  writer=csv.DictWriter(f,fieldnames=fields,delimiter=getattr(dialect,"delimiter",","),lineterminator="\n",extrasaction="ignore")
   writer.writeheader()
   writer.writerows(rows)
  return rows, status_key
